@@ -134,6 +134,71 @@ body {
 }
 .panel-view { display: none; animation: fade .28s ease; }
 .panel-view.active { display: block; }
+
+/* ---------- GEO / SEO para IA ---------- */
+.geo-q {
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin: 8px 0 0;
+  max-width: 70ch;
+}
+.geo-engines {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0 4px 8px;
+}
+.geo-engine {
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.geo-engine-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.geo-model { font-size: 12px; margin: 0 0 12px; }
+.geo-engine h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+}
+.geo-mentions {
+  margin: 0 0 12px;
+  padding-left: 18px;
+}
+.geo-mentions li { margin-bottom: 6px; }
+.geo-mentions .soft { color: var(--ink-soft); list-style: none; margin-left: -18px; }
+.geo-answer summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+}
+.geo-answer pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.55;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 10px 0 0;
+  max-height: 280px;
+  overflow: auto;
+}
+.soft { color: var(--ink-soft); }
+@media (max-width: 820px) {
+  .geo-engines { grid-template-columns: 1fr; }
+}
 @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
 /* ---------- callout ---------- */
@@ -724,12 +789,12 @@ footer.foot {
       <div>
         <span class="eyebrow">Pesquisa de SEO · Brasil</span>
         <h1>Dra. Luana Meireles</h1>
-        <p class="lede">Potencial de busca, concorrência, programação, blog e backlinks para <a href="https://draluanameireles.com.br/" target="_blank" rel="noopener">draluanameireles.com.br</a>.</p>
+        <p class="lede">Potencial de busca, concorrência, programação, blog, backlinks e GEO (SEO para IA) para <a href="https://draluanameireles.com.br/" target="_blank" rel="noopener">draluanameireles.com.br</a>.</p>
       </div>
       <div class="meta-chips">
         <span>50 palavras</span>
         <span>228.490 buscas/mês</span>
-        <span>DataForSEO · Semrush</span>
+        <span>DataForSEO · Semrush · OpenRouter</span>
         <span>Atualizado 2026-09-23</span>
       </div>
     </header>
@@ -740,6 +805,7 @@ footer.foot {
       <button class="tab" type="button" data-view="programacao">Programação<span class="n">5</span></button>
       <button class="tab" type="button" data-view="blog">Blog<span class="n">8</span></button>
       <button class="tab" type="button" data-view="backlinks">Backlinks<span class="n">9</span></button>
+      <button class="tab" type="button" data-view="geo">GEO<span class="n">3</span></button>
     </nav>
 
     <div id="view-potencial" class="panel-view active">
@@ -2073,9 +2139,216 @@ footer.foot {
         </div>
       </section></div>
     </div>
+    <div id="view-geo" class="panel-view">
+    <section class="callout">
+      <span class="callout-badge">GEO · SEO para IA</span>
+      <h2>Como ChatGPT e Gemini falam de otomodelação</h2>
+      <p>Três prompts de pergunta foram enviados ao ChatGPT (GPT-4o) e ao Gemini via OpenRouter.
+      Extraímos nomes de clínicas/profissionais citados e checamos se <strong>Dra. Luana Meireles</strong> aparece.</p>
+    </section>
+    
+    <div class="kpi-grid">
+      <div class="kpi">
+        <span class="kpi-label">Prompts testados</span>
+        <strong class="kpi-value">3</strong>
+        <span class="kpi-hint">otomodelação · pergunta</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Presença do cliente</span>
+        <strong class="kpi-value"><span class="diff dificil">Não aparece</span></strong>
+        <span class="kpi-hint">0/3 prompts</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Respostas com o cliente</span>
+        <strong class="kpi-value">0/6</strong>
+        <span class="kpi-hint">ChatGPT + Gemini</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Marcas citadas</span>
+        <strong class="kpi-value">15</strong>
+        <span class="kpi-hint">profissionais / clínicas</span>
+      </div>
+    </div>
+    
+    <section class="panel wide">
+      <header class="panel-head">
+        <div class="panel-title">
+          <h3>Quem as IAs citam</h3>
+          <p>Ranking agregado de profissionais, clínicas e marcas nas 6 respostas (3 prompts × 2 motores).</p>
+        </div>
+      </header>
+      <div class="scroll">
+        <table class="grid">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome citado</th>
+              <th class="num">Menções</th>
+              <th>Motores</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class='idx'>1</td><td class='term'>Clínica Leger<span class='dom'>clinica</span></td><td class='num strong'>2</td><td>chatgpt, gemini</td></tr><tr><td class='idx'>2</td><td class='term'>BoaConsulta<span class='dom'>marca</span></td><td class='num strong'>1</td><td>chatgpt</td></tr><tr><td class='idx'>3</td><td class='term'>Clínica Dr. Daniel Dziabas<span class='dom'>clinica</span></td><td class='num strong'>1</td><td>gemini</td></tr><tr><td class='idx'>4</td><td class='term'>Clínica Dra. Renata de Ávila<span class='dom'>clinica</span></td><td class='num strong'>1</td><td>gemini</td></tr><tr><td class='idx'>5</td><td class='term'>Clínica Kataoka<span class='dom'>clinica</span></td><td class='num strong'>1</td><td>gemini</td></tr><tr><td class='idx'>6</td><td class='term'>Clínica Volpe<span class='dom'>clinica</span></td><td class='num strong'>1</td><td>chatgpt</td></tr><tr><td class='idx'>7</td><td class='term'>Doctoralia<span class='dom'>marca</span></td><td class='num strong'>1</td><td>chatgpt</td></tr><tr><td class='idx'>8</td><td class='term'>Dr. Alexandre Kataoka<span class='dom'>profissional</span></td><td class='num strong'>1</td><td>gemini</td></tr><tr><td class='idx'>9</td><td class='term'>Dr. André Braz<span class='dom'>profissional</span></td><td class='num strong'>1</td><td>gemini</td></tr><tr><td class='idx'>10</td><td class='term'>Dr. André Colaneri<span class='dom'>profissional</span></td><td class='num strong'>1</td><td>gemini</td></tr><tr><td class='idx'>11</td><td class='term'>Dr. Hector Leal<span class='dom'>profissional</span></td><td class='num strong'>1</td><td>chatgpt</td></tr><tr><td class='idx'>12</td><td class='term'>Dr. Ricardo Cavalcanti<span class='dom'>profissional</span></td><td class='num strong'>1</td><td>chatgpt</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+      <section class="panel wide geo-prompt">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Prompt 1</h3>
+            <p class="geo-q">“Qual a melhor clínica ou profissional para fazer otomodelação (correção de orelha de abano sem cirurgia) em São Paulo? Cite nomes específicos de clínicas ou médicos, se souber.”</p>
+          </div>
+          <span class="diff dificil">Cliente não aparece</span>
+        </header>
+        <div class="geo-engines">
+          
+          <div class="geo-engine">
+            <div class="geo-engine-head">
+              <strong>ChatGPT</strong>
+              <span class="diff dificil">Não aparece</span>
+            </div>
+            <p class="geo-model soft">openai/gpt-4o</p>
+            <h4>Empresas / profissionais mencionados</h4>
+            <ul class="geo-mentions"><li><strong>Doctoralia</strong> <span class='dom'>marca</span> — sites de saúde, como Doctoralia ou BoaConsulta</li><li><strong>BoaConsulta</strong> <span class='dom'>marca</span> — sites de saúde, como Doctoralia ou BoaConsulta</li></ul>
+            <details class="geo-answer">
+              <summary>Ver resposta completa</summary>
+              <pre>Não tenho informações atualizadas sobre clínicas ou profissionais específicos que realizam otomodelação em São Paulo. Recomendo que você consulte avaliações em sites de saúde, como Doctoralia ou BoaConsulta, ou busque recomendações em redes sociais e fóruns especializados. Além disso, é sempre importante verificar as credenciais dos profissionais e, se possível, agendar uma consulta para discutir suas expectativas e o procedimento em detalhe.</pre>
+            </details>
+          </div>
+          <div class="geo-engine">
+            <div class="geo-engine-head">
+              <strong>Gemini</strong>
+              <span class="diff dificil">Não aparece</span>
+            </div>
+            <p class="geo-model soft">google/gemini-2.5-flash</p>
+            <h4>Empresas / profissionais mencionados</h4>
+            <ul class="geo-mentions"><li><strong>Dr. Alexandre Kataoka</strong> <span class='dom'>profissional</span> — Dr. Alexandre Kataoka (Clínica Kataoka): Cirurgião plástico com experiência em cirurgia plástica facial e corporal.</li><li><strong>Clínica Kataoka</strong> <span class='dom'>clinica</span> — Dr. Alexandre Kataoka (Clínica Kataoka): Cirurgião plástico com experiência em cirurgia plástica facial e corporal.</li><li><strong>Dr. André Colaneri</strong> <span class='dom'>profissional</span> — Dr. André Colaneri: Cirurgião plástico com grande experiência em cirurgia plástica facial.</li><li><strong>Clínica Leger</strong> <span class='dom'>clinica</span> — Clínica Leger: É uma clínica de estética e cirurgia plástica que oferece diversos procedimentos, incluindo alguns não cirúrgicos.</li><li><strong>Dra. Luciana Pepino</strong> <span class='dom'>profissional</span> — Dra. Luciana Pepino: Cirurgiã plástica com grande visibilidade e experiência em diversos procedimentos.</li><li><strong>Clínica Dr. Daniel Dziabas</strong> <span class='dom'>clinica</span> — Exemplos podem incluir clínicas como Clínica Dr. Daniel Dziabas ou Clínica Dra. Renata de Ávila.</li><li><strong>Clínica Dra. Renata de Ávila</strong> <span class='dom'>clinica</span> — Exemplos podem incluir clínicas como Clínica Dr. Daniel Dziabas ou Clínica Dra. Renata de Ávila.</li></ul>
+            <details class="geo-answer">
+              <summary>Ver resposta completa</summary>
+              <pre>A otomodelação, também conhecida como otoplastia não cirúrgica ou EarFold, é um procedimento relativamente novo e, por isso, ainda não há uma grande quantidade de profissionais especializados em todas as cidades. Em São Paulo, alguns profissionais e clínicas se destacam por oferecerem essa técnica.
+
+**É importante ressaltar que a otomodelação não é indicada para todos os casos de orelha de abano.** Ela é mais eficaz para correções leves a moderadas, onde a cartilagem da orelha é flexível o suficiente para ser moldada. Em casos mais severos, a cirurgia tradicional (otoplastia) ainda é a opção mais recomendada.
+
+**Para encontrar o melhor profissional, sugiro que você considere os seguintes pontos:**
+
+1.  **Experiência e Especialização:** Busque por cirurgiões plásticos ou dermatologistas que tenham experiência comprovada com a técnica de otomodelação ou otoplastia. Verifique se eles…</pre>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section class="panel wide geo-prompt">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Prompt 2</h3>
+            <p class="geo-q">“Quem você recomenda para correção de orelha de abano sem cortes no Brasil? Liste profissionais ou clínicas conhecidos por otomodelação definitiva.”</p>
+          </div>
+          <span class="diff dificil">Cliente não aparece</span>
+        </header>
+        <div class="geo-engines">
+          
+          <div class="geo-engine">
+            <div class="geo-engine-head">
+              <strong>ChatGPT</strong>
+              <span class="diff dificil">Não aparece</span>
+            </div>
+            <p class="geo-model soft">openai/gpt-4o</p>
+            <h4>Empresas / profissionais mencionados</h4>
+            <ul class="geo-mentions"><li><strong>Dr. Hector Leal</strong> <span class='dom'>profissional</span> — Dr. Hector Leal - Conhecido por realizar procedimentos de correção de orelha de abano sem cortes, utilizando técnicas minimamente invasivas.</li><li><strong>Clínica Leger</strong> <span class='dom'>clinica</span> — Clínica Leger - Oferece procedimentos de otomodelação e é reconhecida por tratamentos estéticos avançados.</li><li><strong>Dr. Ricardo Cavalcanti</strong> <span class='dom'>profissional</span> — Dr. Ricardo Cavalcanti - Especialista em otoplastia não cirúrgica, utilizando técnicas modernas para correção de orelha de abano.</li><li><strong>Clínica Volpe</strong> <span class='dom'>clinica</span> — Clínica Volpe - Localizada em São Paulo, é conhecida por oferecer diversos procedimentos estéticos, incluindo a correção de orelha de abano sem cortes.</li></ul>
+            <details class="geo-answer">
+              <summary>Ver resposta completa</summary>
+              <pre>A correção de orelha de abano sem cortes é uma técnica relativamente nova e pode ser referida como otomodelação ou otoplastia não cirúrgica. No Brasil, alguns profissionais e clínicas se destacam por oferecerem esse tipo de procedimento. No entanto, é importante verificar a experiência e as qualificações dos profissionais antes de tomar uma decisão. Aqui estão algumas opções que podem ser consideradas:
+
+1. **Dr. Hector Leal** - Conhecido por realizar procedimentos de correção de orelha de abano sem cortes, utilizando técnicas minimamente invasivas.
+
+2. **Clínica Leger** - Oferece procedimentos de otomodelação e é reconhecida por tratamentos estéticos avançados.
+
+3. **Dr. Ricardo Cavalcanti** - Especialista em otoplastia não cirúrgica, utilizando técnicas modernas para correção de orelha de abano.
+
+4. **Clínica Volpe** - Localizada em São Paulo, é conhecida por oferecer diversos…</pre>
+            </details>
+          </div>
+          <div class="geo-engine">
+            <div class="geo-engine-head">
+              <strong>Gemini</strong>
+              <span class="diff dificil">Não aparece</span>
+            </div>
+            <p class="geo-model soft">google/gemini-2.5-flash</p>
+            <h4>Empresas / profissionais mencionados</h4>
+            <ul class="geo-mentions"><li><strong>EarFold</strong> <span class='dom'>marca</span> — EarFold (embora EarFold seja um dispositivo específico e nem todos os métodos sem cortes o utilizem)</li></ul>
+            <details class="geo-answer">
+              <summary>Ver resposta completa</summary>
+              <pre>A correção de orelha de abano sem cortes, também conhecida como **otomodelação não cirúrgica** ou **EarFold (embora EarFold seja um dispositivo específico e nem todos os métodos sem cortes o utilizem)**, é uma técnica que vem ganhando popularidade. No entanto, é importante ressaltar que ela **não é definitiva para todos os casos e nem para todos os tipos de orelha de abano**. Geralmente, é mais eficaz em crianças pequenas, onde a cartilagem é mais maleável, ou em adultos com casos leves a moderados.
+
+**No Brasil, a otomodelação não cirúrgica para orelha de abano é um campo em desenvolvimento e ainda não há uma lista extensa de profissionais que a realizem de forma rotineira e com resultados comprovados a longo prazo em todos os casos.** A maioria dos cirurgiões plásticos ainda prefere a otoplastia cirúrgica para resultados definitivos e para casos mais complexos.
+
+**Profissionais e…</pre>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section class="panel wide geo-prompt">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Prompt 3</h3>
+            <p class="geo-q">“Onde fazer otomodelação definitiva sem cirurgia? Quais são as principais referências ou especialistas nesse procedimento no Brasil?”</p>
+          </div>
+          <span class="diff dificil">Cliente não aparece</span>
+        </header>
+        <div class="geo-engines">
+          
+          <div class="geo-engine">
+            <div class="geo-engine-head">
+              <strong>ChatGPT</strong>
+              <span class="diff dificil">Não aparece</span>
+            </div>
+            <p class="geo-model soft">openai/gpt-4o</p>
+            <h4>Empresas / profissionais mencionados</h4>
+            <ul class="geo-mentions"><li class='soft'>Nenhum nome próprio citado.</li></ul>
+            <details class="geo-answer">
+              <summary>Ver resposta completa</summary>
+              <pre>A otomodelação definitiva sem cirurgia é um procedimento relativamente novo e inovador que envolve a remodelação das orelhas sem a necessidade de intervenção cirúrgica. No Brasil, existem alguns especialistas e clínicas que oferecem esse tipo de tratamento, geralmente utilizando técnicas avançadas de modelagem com fios ou outros materiais que permitem a correção estética das orelhas de forma menos invasiva.
+
+Para encontrar referências ou especialistas no Brasil, uma boa abordagem é buscar por clínicas de estética avançada ou dermatologistas que tenham experiência em procedimentos minimamente invasivos. Algumas cidades como São Paulo, Rio de Janeiro e Curitiba têm clínicas renomadas que podem oferecer esse tipo de serviço.
+
+Recomendo que você:
+
+1. **Pesquise Online**: Utilize plataformas de busca para encontrar clínicas e especialistas que mencionem a otomodelação definitiva sem cirurgia…</pre>
+            </details>
+          </div>
+          <div class="geo-engine">
+            <div class="geo-engine-head">
+              <strong>Gemini</strong>
+              <span class="diff dificil">Não aparece</span>
+            </div>
+            <p class="geo-model soft">google/gemini-2.5-flash</p>
+            <h4>Empresas / profissionais mencionados</h4>
+            <ul class="geo-mentions"><li><strong>Dr. André Braz</strong> <span class='dom'>profissional</span> — Dr. André Braz (Rio de Janeiro): Considerado um dos pioneiros e maiores especialistas em harmonização facial e procedimentos minimamente invasivos no Brasil.</li><li><strong>Sociedade Brasileira de Cirurgia Plástica</strong> <span class='dom'>clinica</span> — Certifique-se de que o médico é registrado no Conselho Regional de Medicina (CRM) e, se for cirurgião plástico, na Sociedade Brasileira de Cirurgia Plástica (SBCP).</li></ul>
+            <details class="geo-answer">
+              <summary>Ver resposta completa</summary>
+              <pre>A otomodelação definitiva sem cirurgia é um procedimento que visa corrigir orelhas de abano de forma minimamente invasiva, sem a necessidade de cortes ou internação. No Brasil, essa técnica é conhecida principalmente como **Otoplastia sem corte** ou **Otoplastia com fios**, e tem ganhado popularidade por ser menos invasiva e ter um tempo de recuperação mais rápido que a cirurgia tradicional.
+
+**Onde fazer otomodelação definitiva sem cirurgia no Brasil?**
+
+Esse tipo de procedimento é geralmente realizado por **médicos dermatologistas** ou **cirurgiões plásticos** que possuem especialização e treinamento específicos na técnica. É crucial escolher um profissional experiente e qualificado para garantir a segurança e o sucesso do tratamento.
+
+**Principais referências ou especialistas no Brasil:**
+
+É importante ressaltar que a medicina estética está em constante evolução, e novos…</pre>
+            </details>
+          </div>
+        </div>
+      </section>
+    <section class="callout">
+      <span class="callout-badge">Leitura</span>
+      <h2>Conclusão GEO</h2>
+      <p><strong>Dra. Luana Meireles</strong> <em>não foi citada</em> em nenhum dos 6 testes (ChatGPT + Gemini). Há espaço para trabalhar menções em conteúdo, reviews e presença digital que as IAs usam como fonte.</p>
+      <p class="soft">Fonte: OpenRouter · gerado em 2026-09-23T13:32:04</p>
+    </section></div>
 
     <footer class="foot">
-      <span>Volumes: DataForSEO · Marca/Seo e Backlinks: Semrush · Programação/Blog: auditoria draluanameireles.com.br</span>
+      <span>Volumes: DataForSEO · Marca/Seo e Backlinks: Semrush · GEO: OpenRouter (ChatGPT + Gemini) · Programação/Blog: auditoria draluanameireles.com.br</span>
       <span>Referência de marca Dra. Luana Meireles: 1</span>
     </footer>
   </div>
