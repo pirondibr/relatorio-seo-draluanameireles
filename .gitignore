@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+collect_data.py
+refresh_blog_backlinks.py
+gerar_relatorio.py
+INSTRUCOES-IA.md
+*.json
+*.xlsx
+.DS_Store

@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório SEO · Dra. Luana Meireles</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --ink: #14211f;
+  --ink-soft: #5d6b68;
+  --line: #e2ded4;
+  --line-soft: #efece4;
+  --paper: #ffffff;
+  --bg: #f4f2ec;
+  --accent: #0d3b3a;
+  --accent-soft: #14544f;
+  --gold: #b3893f;
+  --facil: #1e8a5f;
+  --facil-bg: #dff3e6;
+  --medio: #b26a12;
+  --medio-bg: #fbeacd;
+  --dificil: #b23a35;
+  --dificil-bg: #fadedb;
+  --ref: #1f5f86;
+  --ref-bg: #ddebf6;
+  --radius: 16px;
+  --shadow: 0 1px 2px rgba(20,33,31,.04), 0 8px 24px rgba(20,33,31,.05);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  background:
+    radial-gradient(1100px 520px at 8% -8%, #e0efec 0%, transparent 62%),
+    radial-gradient(820px 420px at 96% -4%, #f3e8d6 0%, transparent 58%),
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1220px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ---------- header ---------- */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: var(--gold);
+}
+.masthead h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.35rem;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--accent);
+  font-weight: 600;
+}
+.masthead .lede { margin: 8px 0 0; color: var(--ink-soft); max-width: 56ch; }
+.meta-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.meta-chips span {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: .78rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* ---------- tabs ---------- */
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  gap: 4px;
+  margin: 0 -24px 26px;
+  padding: 14px 24px;
+  background: rgba(244,242,236,.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.tab {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-weight: 600;
+  font-size: .92rem;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: .18s ease;
+}
+.tab:hover { color: var(--accent); background: rgba(13,59,58,.06); }
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(13,59,58,.22);
+}
+.tab .n {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: .72rem;
+  opacity: .7;
+  font-variant-numeric: tabular-nums;
+}
+.panel-view { display: none; animation: fade .28s ease; }
+.panel-view.active { display: block; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- callout ---------- */
+.callout {
+  position: relative;
+  background: linear-gradient(180deg, #fffefb, #fdfbf6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.callout::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent), var(--gold));
+}
+.callout.warn::before { background: linear-gradient(180deg, var(--medio), var(--dificil)); }
+.callout-badge {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.callout h2 {
+  margin: 0 0 10px;
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: var(--accent);
+  font-weight: 600;
+}
+.callout p { margin: 0; color: var(--ink-soft); max-width: 82ch; }
+.callout strong { color: var(--ink); }
+.conc-lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--line);
+}
+.list-label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.tag.op { background: var(--facil-bg); color: var(--facil); border-color: #bfe6cd; }
+.tag.hard { background: var(--dificil-bg); color: var(--dificil); border-color: #f2c8c4; }
+
+/* ---------- kpis ---------- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.kpi {
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.kpi::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.kpi-label {
+  display: block;
+  font-size: .74rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .72;
+  margin-bottom: 8px;
+}
+.kpi-value {
+  display: block;
+  font-size: 2.05rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+}
+.kpi-hint { display: block; margin-top: 8px; font-size: .76rem; opacity: .62; }
+
+/* ---------- layout ---------- */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  gap: 14px;
+  margin-bottom: 30px;
+  align-items: start;
+}
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+.stack { display: grid; gap: 14px; }
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 34px 0 16px;
+}
+.section-label span {
+  font-family: Georgia, serif;
+  font-size: 1.12rem;
+  color: var(--accent);
+}
+.section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ---------- panel ---------- */
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  min-width: 0;
+}
+.panel.soft { background: linear-gradient(180deg, #fffefc, var(--paper)); }
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.panel-title h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: -.01em;
+}
+.panel-title p { margin: 4px 0 0; font-size: .78rem; color: var(--ink-soft); }
+
+.sorter { display: inline-flex; gap: 4px; flex-shrink: 0; }
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .15s;
+}
+.chip:hover { border-color: var(--accent-soft); color: var(--accent); }
+.chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ---------- funnel ---------- */
+.funnel { padding: 16px 18px 20px; display: grid; gap: 16px; }
+.funnel-row { display: grid; grid-template-columns: 86px 1fr auto; align-items: center; gap: 12px; }
+.funnel-name { font-size: .84rem; font-weight: 600; display: inline-flex; align-items: center; gap: 7px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot.topo { background: #6aa8d8; }
+.dot.meio { background: #e0b054; }
+.dot.fundo { background: #5cb389; }
+.funnel-track { height: 9px; background: var(--line-soft); border-radius: 999px; overflow: hidden; }
+.funnel-fill { height: 100%; border-radius: 999px; }
+.funnel-fill.topo { background: linear-gradient(90deg, #8fc0e6, #5a95c9); }
+.funnel-fill.meio { background: linear-gradient(90deg, #f0cd88, #d69f38); }
+.funnel-fill.fundo { background: linear-gradient(90deg, #8fd3b1, #48a175); }
+.funnel-meta { font-size: .76rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---------- category cards ---------- */
+.cat-grid {
+  padding: 16px 18px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.panel.feature { margin-bottom: 14px; }
+.cat-grid.wide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 18px; padding: 18px 20px 22px; }
+.cat-grid.wide-grid .cat-card {
+  padding: 15px 18px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "top top" "bar bar" "meta term";
+  column-gap: 18px;
+  align-items: center;
+}
+.cat-grid.wide-grid .cat-card-top { grid-area: top; }
+.cat-grid.wide-grid .bar { grid-area: bar; }
+.cat-grid.wide-grid .cat-card-meta { grid-area: meta; }
+.cat-grid.wide-grid .cat-card-top-term { grid-area: term; margin: 0; text-align: right; }
+.cat-grid.wide-grid .cat-card-top h3 { font-size: .95rem; }
+.panel.funnel-panel { margin-bottom: 30px; }
+.panel.funnel-panel .funnel { grid-template-columns: repeat(3, minmax(0, 1fr)); display: grid; gap: 22px; }
+.panel.funnel-panel .funnel-row { grid-template-columns: 78px 1fr; grid-template-areas: "name track" "meta meta"; row-gap: 7px; }
+.panel.funnel-panel .funnel-name { grid-area: name; }
+.panel.funnel-panel .funnel-track { grid-area: track; }
+.panel.funnel-panel .funnel-meta { grid-area: meta; }
+.cat-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 13px 14px;
+  background: #fff;
+  transition: .18s ease;
+}
+.cat-card:hover {
+  border-color: var(--accent-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(20,33,31,.07);
+}
+.cat-card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.cat-card-top h3 { margin: 0; font-size: .88rem; color: var(--accent); line-height: 1.3; }
+.share { font-size: .78rem; font-weight: 700; color: var(--gold); font-variant-numeric: tabular-nums; }
+.bar { height: 5px; background: var(--line-soft); border-radius: 999px; margin: 10px 0 9px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent-soft), var(--accent)); }
+.cat-card-meta { display: flex; gap: 14px; font-size: .76rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.cat-card-meta strong { color: var(--ink); }
+.cat-card-top-term {
+  margin: 8px 0 0;
+  font-size: .72rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- difficulty bars ---------- */
+.dbars { padding: 16px 18px 8px; display: grid; gap: 12px; }
+.dbar-row { display: grid; grid-template-columns: minmax(0, 150px) 1fr auto; align-items: center; gap: 12px; }
+.dbar-name { font-size: .8rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dbar { display: flex; height: 9px; border-radius: 999px; overflow: hidden; background: var(--line-soft); }
+.seg.facil { background: #4dae7f; }
+.seg.medio { background: #e0a24a; }
+.seg.dificil { background: #d4726c; }
+.dbar-meta { font-size: .74rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; padding: 6px 18px 18px; font-size: .74rem; color: var(--ink-soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.sw.facil { background: #4dae7f; }
+.sw.medio { background: #e0a24a; }
+.sw.dificil { background: #d4726c; }
+
+.method { margin: 0; padding: 16px 18px 20px 36px; color: var(--ink-soft); font-size: .86rem; }
+.method li { margin-bottom: 7px; }
+.method strong { color: var(--ink); }
+
+/* ---------- tables ---------- */
+.scroll { overflow-x: auto; max-height: 460px; }
+table.grid { width: 100%; border-collapse: collapse; font-size: .84rem; }
+table.grid thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  text-align: left;
+  padding: 9px 12px;
+  background: #f7f5ef;
+  border-bottom: 1px solid var(--line);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+table.grid tbody td { padding: 9px 12px; border-bottom: 1px solid var(--line-soft); }
+table.grid tbody tr:last-child td { border-bottom: none; }
+table.grid tbody tr:hover { background: #f8fbfa; }
+th.sortable { cursor: pointer; user-select: none; }
+th.sortable:hover { color: var(--accent); }
+.idx { width: 38px; color: #a8a29a; font-variant-numeric: tabular-nums; text-align: right; }
+.term { font-weight: 500; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.num.strong { font-weight: 700; }
+.soft-col { color: var(--ink-soft); }
+.rank-cell { width: 78px; }
+.rank { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .8rem; }
+.rank.ok { color: var(--facil); }
+.rank.none { color: #b8b2a8; }
+
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+}
+.pill.topo { background: #e2eef8; color: #1c5e8c; }
+.pill.meio { background: #fbf0d5; color: #8a6416; }
+.pill.fundo { background: #ddf2e6; color: #1c7a52; }
+
+.diff {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.diff.facil { background: var(--facil-bg); color: var(--facil); }
+.diff.medio { background: var(--medio-bg); color: var(--medio); }
+.diff.dificil { background: var(--dificil-bg); color: var(--dificil); }
+.diff.ref, .diff.na { background: var(--ref-bg); color: var(--ref); }
+
+/* ---------- programação ---------- */
+.prog-kpis .ok-kpi { background: linear-gradient(160deg, #14544f, #0d3b3a); }
+.prog-kpis .bad-kpi { background: linear-gradient(160deg, #8f3a36, #6d2824); }
+.crit-list { display: grid; gap: 14px; }
+.crit {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.crit.ok { border-left: 4px solid var(--facil); }
+.crit.bad { border-left: 4px solid var(--dificil); }
+.crit-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: start;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.crit-num {
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  color: var(--gold);
+  line-height: 1;
+  padding-top: 2px;
+}
+.crit-head h3 { margin: 0; font-size: 1.05rem; color: var(--accent); }
+.crit-head p { margin: 4px 0 0; font-size: .84rem; color: var(--ink-soft); }
+.crit-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.crit-badge.ok { background: var(--facil-bg); color: var(--facil); }
+.crit-badge.bad { background: var(--dificil-bg); color: var(--dificil); }
+.crit-body { padding: 16px 20px 20px; }
+.crit-note { margin: 0 0 12px; font-size: .84rem; color: var(--ink-soft); }
+.crit-note code, .meta-desc code, .method code {
+  background: var(--line-soft);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: .8em;
+}
+.meta-proof {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.meta-card {
+  background: #faf8f3;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 14px 16px;
+  min-width: 0;
+}
+.meta-card.wide { grid-column: 1 / -1; }
+.meta-card.warn-card {
+  background: #fbf3f2;
+  border-color: #f0cfcb;
+}
+.meta-label {
+  display: block;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.meta-card code {
+  display: block;
+  font-size: .82rem;
+  color: var(--accent);
+  word-break: break-word;
+  line-height: 1.45;
+}
+.meta-title-preview {
+  display: block;
+  font-size: 1.05rem;
+  color: #1a0dab;
+  line-height: 1.3;
+}
+.meta-desc {
+  margin: 0;
+  font-size: .88rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.source-block {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  background: #141f1e;
+  color: #d7e6e2;
+  border-radius: 10px;
+  font-size: .75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.url-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.url-chip {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: #f3f7f6;
+  border: 1px solid #d5e4e1;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .8rem;
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.medium-link {
+  display: inline-block;
+  color: var(--dificil);
+  font-weight: 700;
+  text-decoration: none;
+  word-break: break-all;
+}
+.medium-link:hover { text-decoration: underline; }
+
+/* ---------- blog factors ---------- */
+.blog-kpis .bad-kpi { background: linear-gradient(160deg, #8f3a36, #6d2824); }
+.factor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.factor-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: start;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 18px 18px 16px;
+  min-width: 0;
+}
+.factor-num {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+  line-height: 1;
+  padding-top: 3px;
+}
+.factor-card h3 {
+  margin: 0;
+  font-size: .98rem;
+  color: var(--accent);
+  letter-spacing: -.01em;
+}
+.factor-card p {
+  margin: 6px 0 0;
+  font-size: .84rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+.factor-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: #efece4;
+  color: #7a7368;
+  border: 1px solid var(--line);
+}
+
+/* ---------- serp blocks ---------- */
+.panel.wide { grid-column: 1 / -1; }
+.kw { border-top: 1px solid var(--line-soft); }
+.kw-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  padding: 13px 18px 9px;
+}
+.kw-head h4 { margin: 0; font-size: .92rem; color: var(--ink); }
+.kw-meta { font-size: .76rem; color: var(--ink-soft); }
+table.serp .scroll { max-height: none; }
+table.serp tbody tr.jk { background: #f2f8f7; }
+table.serp tbody tr.jk td { border-bottom-color: #dbe9e6; }
+.term a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.term a:hover { text-decoration: underline; }
+.dom { display: block; font-size: .7rem; color: var(--ink-soft); margin-top: 2px; }
+.muted { color: var(--ink-soft); }
+
+footer.foot {
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: .78rem;
+  color: var(--ink-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  justify-content: space-between;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1040px) {
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .split, .panel-grid { grid-template-columns: 1fr; }
+  .cat-grid { grid-template-columns: 1fr 1fr; }
+  .cat-grid.wide-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 680px) {
+  .wrap { padding: 26px 16px 60px; }
+  .masthead h1 { font-size: 1.8rem; }
+  .kpi-grid, .cat-grid, .cat-grid.wide-grid, .conc-lists, .meta-proof, .blog-grid, .factor-grid { grid-template-columns: 1fr; }
+  .panel.funnel-panel .funnel { grid-template-columns: 1fr; gap: 16px; }
+  .crit-head { grid-template-columns: auto 1fr; }
+  .crit-badge { grid-column: 2; justify-self: start; }
+  .factor-card { grid-template-columns: auto 1fr; }
+  .factor-status { grid-column: 2; justify-self: start; }
+  .tabs { margin: 0 -16px 20px; padding: 12px 16px; }
+  .soft-col { display: none; }
+}
+
+@media print {
+  body { background: #fff; }
+  .tabs { display: none; }
+  .panel-view { display: block !important; }
+  .panel, .callout, .kpi { box-shadow: none; break-inside: avoid; }
+  .scroll { max-height: none; overflow: visible; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="masthead">
+      <div>
+        <span class="eyebrow">Pesquisa de SEO · Brasil</span>
+        <h1>Dra. Luana Meireles</h1>
+        <p class="lede">Potencial de busca, concorrência, programação, blog e backlinks para <a href="https://draluanameireles.com.br/" target="_blank" rel="noopener">draluanameireles.com.br</a>.</p>
+      </div>
+      <div class="meta-chips">
+        <span>50 palavras</span>
+        <span>228.490 buscas/mês</span>
+        <span>DataForSEO · Semrush</span>
+        <span>Atualizado 2026-09-23</span>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" type="button" data-view="potencial">Potencial<span class="n">50</span></button>
+      <button class="tab" type="button" data-view="concorrencia">Concorrência<span class="n">18</span></button>
+      <button class="tab" type="button" data-view="programacao">Programação<span class="n">5</span></button>
+      <button class="tab" type="button" data-view="blog">Blog<span class="n">8</span></button>
+      <button class="tab" type="button" data-view="backlinks">Backlinks<span class="n">9</span></button>
+    </nav>
+
+    <div id="view-potencial" class="panel-view active">
+    <section class="callout">
+      <span class="callout-badge">Conclusão</span>
+      <h2>Existe um ótimo potencial para SEO</h2>
+      <p>O público-alvo está pesquisando ativamente termos relacionados aos produtos e ao posicionamento do Dra. Luana Meireles no Google. São <strong>50 palavras</strong> validadas somando <strong>228.490 buscas mensais</strong> no Brasil, distribuídas em <strong>7 categorias macro</strong> — todas conectadas às ofertas do site (otomodelação Remodele, bioestimuladores de colágeno, preenchimentos faciais, fios de PDO, full face, lipo de papada e harmonização facial).</p>
+    </section>
+
+    <div class="kpi-grid">
+        <div class="kpi">
+          <span class="kpi-label">Palavras mapeadas</span>
+          <strong class="kpi-value">50</strong>
+          <span class="kpi-hint">termos validados no DataForSEO</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Volume mensal</span>
+          <strong class="kpi-value">228,5k</strong>
+          <span class="kpi-hint">228.490 buscas/mês no Brasil</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Categorias macro</span>
+          <strong class="kpi-value">7</strong>
+          <span class="kpi-hint">pilares de conteúdo</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Já ranqueando</span>
+          <strong class="kpi-value">2</strong>
+          <span class="kpi-hint">termos com posição registrada</span>
+        </div></div>
+
+    <section class="panel soft feature">
+      <header class="panel-head"><div class="panel-title"><h3>Categorias macro</h3><p>Participação no volume total de busca</p></div></header>
+      <div class="cat-grid wide-grid">
+        <a class="cat-card" href="#cat-otomodelação">
+          <div class="cat-card-top">
+            <h3>Otomodelação</h3>
+            <span class="share">6%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" style="width:18.9%"></div></div>
+          <div class="cat-card-meta">
+            <span><strong>9</strong> palavras</span>
+            <span><strong>13.790</strong> /mês</span>
+          </div>
+          <p class="cat-card-top-term">Top: orelha de abano · 8.100</p>
+        </a>
+        <a class="cat-card" href="#cat-preenchimentos-faciais">
+          <div class="cat-card-top">
+            <h3>Preenchimentos faciais</h3>
+            <span class="share">32%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" style="width:100.0%"></div></div>
+          <div class="cat-card-meta">
+            <span><strong>15</strong> palavras</span>
+            <span><strong>73.050</strong> /mês</span>
+          </div>
+          <p class="cat-card-top-term">Top: preenchimento labial · 49.500</p>
+        </a>
+        <a class="cat-card" href="#cat-bioestimuladores">
+          <div class="cat-card-top">
+            <h3>Bioestimuladores</h3>
+            <span class="share">26%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" style="width:81.0%"></div></div>
+          <div class="cat-card-meta">
+            <span><strong>9</strong> palavras</span>
+            <span><strong>59.140</strong> /mês</span>
+          </div>
+          <p class="cat-card-top-term">Top: sculptra · 33.100</p>
+        </a>
+        <a class="cat-card" href="#cat-fios-de-pdo-lifting">
+          <div class="cat-card-top">
+            <h3>Fios de PDO &amp; lifting</h3>
+            <span class="share">9%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" style="width:26.7%"></div></div>
+          <div class="cat-card-meta">
+            <span><strong>6</strong> palavras</span>
+            <span><strong>19.540</strong> /mês</span>
+          </div>
+          <p class="cat-card-top-term">Top: fios de pdo · 14.800</p>
+        </a>
+        <a class="cat-card" href="#cat-harmonização-full-face">
+          <div class="cat-card-top">
+            <h3>Harmonização &amp; Full Face</h3>
+            <span class="share">22%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" style="width:69.4%"></div></div>
+          <div class="cat-card-meta">
+            <span><strong>8</strong> palavras</span>
+            <span><strong>50.730</strong> /mês</span>
+          </div>
+          <p class="cat-card-top-term">Top: harmonização facial · 49.500</p>
+        </a>
+        <a class="cat-card" href="#cat-lipo-de-papada">
+          <div class="cat-card-top">
+            <h3>Lipo de papada</h3>
+            <span class="share">5%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" style="width:16.7%"></div></div>
+          <div class="cat-card-meta">
+            <span><strong>2</strong> palavras</span>
+            <span><strong>12.190</strong> /mês</span>
+          </div>
+          <p class="cat-card-top-term">Top: lipoaspiracao de papada · 12.100</p>
+        </a>
+        <a class="cat-card" href="#cat-branding">
+          <div class="cat-card-top">
+            <h3>Branding</h3>
+            <span class="share">0%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" style="width:0.1%"></div></div>
+          <div class="cat-card-meta">
+            <span><strong>1</strong> palavras</span>
+            <span><strong>50</strong> /mês</span>
+          </div>
+          <p class="cat-card-top-term">Top: luana meireles · 50</p>
+        </a></div>
+    </section>
+
+    <section class="panel soft funnel-panel">
+      <header class="panel-head"><div class="panel-title"><h3>Distribuição por funil</h3><p>Onde está o volume de busca</p></div></header>
+      <div class="funnel">
+          <div class="funnel-row">
+            <span class="funnel-name"><i class="dot topo"></i>Topo</span>
+            <div class="funnel-track"><div class="funnel-fill topo" style="width:0.9%"></div></div>
+            <span class="funnel-meta">21 termos · 2.140</span>
+          </div>
+          <div class="funnel-row">
+            <span class="funnel-name"><i class="dot meio"></i>Meio</span>
+            <div class="funnel-track"><div class="funnel-fill meio" style="width:22.6%"></div></div>
+            <span class="funnel-meta">5 termos · 51.660</span>
+          </div>
+          <div class="funnel-row">
+            <span class="funnel-name"><i class="dot fundo"></i>Fundo</span>
+            <div class="funnel-track"><div class="funnel-fill fundo" style="width:76.5%"></div></div>
+            <span class="funnel-meta">24 termos · 174.690</span>
+          </div></div>
+    </section>
+
+    <div class="section-label"><span>Termos por categoria</span></div>
+    <div class="panel-grid">
+      <section class="panel" id="cat-otomodelação">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Otomodelação</h3>
+            <p>9 palavras · 13.790 buscas/mês · 2 ranqueando</p>
+          </div>
+          <div class="sorter">
+            <button type="button" class="chip active" data-sort="desc">Maior</button>
+            <button type="button" class="chip" data-sort="asc">Menor</button>
+          </div>
+        </header>
+        <div class="scroll">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th class="idx">#</th>
+                <th>Termo</th>
+                <th class="num sortable">Pesquisa/mês</th>
+                <th>Funil</th>
+                <th>Posição</th>
+              </tr>
+            </thead>
+            <tbody><tr data-volume='8100' data-pos='0'><td class='idx'>1</td><td class='term'>orelha de abano</td><td class='num'>8.100</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='5400' data-pos='10'><td class='idx'>2</td><td class='term'>otomodelacao</td><td class='num'>5.400</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank ok'>#10</span></td></tr><tr data-volume='70' data-pos='0'><td class='idx'>3</td><td class='term'>otoplastia sem cirurgia</td><td class='num'>70</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='50' data-pos='0'><td class='idx'>4</td><td class='term'>correção de orelhas sem cirurgia</td><td class='num'>50</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='50' data-pos='0'><td class='idx'>5</td><td class='term'>otomodelação definitiva</td><td class='num'>50</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='40' data-pos='11'><td class='idx'>6</td><td class='term'>o que e otomodelacao</td><td class='num'>40</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank ok'>#11</span></td></tr><tr data-volume='30' data-pos='0'><td class='idx'>7</td><td class='term'>como funciona a otomodelação</td><td class='num'>30</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='30' data-pos='0'><td class='idx'>8</td><td class='term'>como funciona otomodelacao</td><td class='num'>30</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='20' data-pos='0'><td class='idx'>9</td><td class='term'>o que e orelha de abano</td><td class='num'>20</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="cat-preenchimentos-faciais">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Preenchimentos faciais</h3>
+            <p>15 palavras · 73.050 buscas/mês · 0 ranqueando</p>
+          </div>
+          <div class="sorter">
+            <button type="button" class="chip active" data-sort="desc">Maior</button>
+            <button type="button" class="chip" data-sort="asc">Menor</button>
+          </div>
+        </header>
+        <div class="scroll">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th class="idx">#</th>
+                <th>Termo</th>
+                <th class="num sortable">Pesquisa/mês</th>
+                <th>Funil</th>
+                <th>Posição</th>
+              </tr>
+            </thead>
+            <tbody><tr data-volume='49500' data-pos='0'><td class='idx'>1</td><td class='term'>preenchimento labial</td><td class='num'>49.500</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='14800' data-pos='0'><td class='idx'>2</td><td class='term'>preenchimento de olheiras</td><td class='num'>14.800</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='5400' data-pos='0'><td class='idx'>3</td><td class='term'>preenchimento bigode chinês</td><td class='num'>5.400</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='1000' data-pos='0'><td class='idx'>4</td><td class='term'>preenchimento de queixo</td><td class='num'>1.000</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='880' data-pos='0'><td class='idx'>5</td><td class='term'>preenchimento de têmpora</td><td class='num'>880</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='480' data-pos='0'><td class='idx'>6</td><td class='term'>tipos de preenchimento labial</td><td class='num'>480</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='320' data-pos='0'><td class='idx'>7</td><td class='term'>preenchimento de mandíbula</td><td class='num'>320</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='260' data-pos='0'><td class='idx'>8</td><td class='term'>acido hialuronico no rosto</td><td class='num'>260</td><td><span class='pill meio'>Meio</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='210' data-pos='0'><td class='idx'>9</td><td class='term'>procedimentos estéticos faciais</td><td class='num'>210</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='90' data-pos='0'><td class='idx'>10</td><td class='term'>como funciona o preenchimento de olheiras</td><td class='num'>90</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='30' data-pos='0'><td class='idx'>11</td><td class='term'>como funciona preenchimento de olheiras</td><td class='num'>30</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='30' data-pos='0'><td class='idx'>12</td><td class='term'>o que e preenchimento labial</td><td class='num'>30</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='20' data-pos='0'><td class='idx'>13</td><td class='term'>como melhorar a aparência das olheiras</td><td class='num'>20</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='20' data-pos='0'><td class='idx'>14</td><td class='term'>como suavizar linhas de expressão</td><td class='num'>20</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='10' data-pos='0'><td class='idx'>15</td><td class='term'>como aumentar o volume dos lábios</td><td class='num'>10</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="cat-bioestimuladores">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Bioestimuladores</h3>
+            <p>9 palavras · 59.140 buscas/mês · 0 ranqueando</p>
+          </div>
+          <div class="sorter">
+            <button type="button" class="chip active" data-sort="desc">Maior</button>
+            <button type="button" class="chip" data-sort="asc">Menor</button>
+          </div>
+        </header>
+        <div class="scroll">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th class="idx">#</th>
+                <th>Termo</th>
+                <th class="num sortable">Pesquisa/mês</th>
+                <th>Funil</th>
+                <th>Posição</th>
+              </tr>
+            </thead>
+            <tbody><tr data-volume='33100' data-pos='0'><td class='idx'>1</td><td class='term'>sculptra</td><td class='num'>33.100</td><td><span class='pill meio'>Meio</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='18100' data-pos='0'><td class='idx'>2</td><td class='term'>radiesse</td><td class='num'>18.100</td><td><span class='pill meio'>Meio</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='3600' data-pos='0'><td class='idx'>3</td><td class='term'>bioestimulador de colageno</td><td class='num'>3.600</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='3600' data-pos='0'><td class='idx'>4</td><td class='term'>bioestimuladores de colágeno</td><td class='num'>3.600</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='260' data-pos='0'><td class='idx'>5</td><td class='term'>para que serve bioestimulador de colágeno</td><td class='num'>260</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='140' data-pos='0'><td class='idx'>6</td><td class='term'>aplicação de bioestimuladores</td><td class='num'>140</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='140' data-pos='0'><td class='idx'>7</td><td class='term'>o que são bioestimuladores de colágeno</td><td class='num'>140</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='110' data-pos='0'><td class='idx'>8</td><td class='term'>o que e bioestimulador de colageno</td><td class='num'>110</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='90' data-pos='0'><td class='idx'>9</td><td class='term'>tratamentos para flacidez facial</td><td class='num'>90</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="cat-fios-de-pdo-lifting">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Fios de PDO &amp; lifting</h3>
+            <p>6 palavras · 19.540 buscas/mês · 0 ranqueando</p>
+          </div>
+          <div class="sorter">
+            <button type="button" class="chip active" data-sort="desc">Maior</button>
+            <button type="button" class="chip" data-sort="asc">Menor</button>
+          </div>
+        </header>
+        <div class="scroll">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th class="idx">#</th>
+                <th>Termo</th>
+                <th class="num sortable">Pesquisa/mês</th>
+                <th>Funil</th>
+                <th>Posição</th>
+              </tr>
+            </thead>
+            <tbody><tr data-volume='14800' data-pos='0'><td class='idx'>1</td><td class='term'>fios de pdo</td><td class='num'>14.800</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='4400' data-pos='0'><td class='idx'>2</td><td class='term'>fios de sustentacao</td><td class='num'>4.400</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='170' data-pos='0'><td class='idx'>3</td><td class='term'>para que serve fios de pdo</td><td class='num'>170</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='110' data-pos='0'><td class='idx'>4</td><td class='term'>lifting com fios</td><td class='num'>110</td><td><span class='pill meio'>Meio</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='40' data-pos='0'><td class='idx'>5</td><td class='term'>o que e fios de pdo</td><td class='num'>40</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='20' data-pos='0'><td class='idx'>6</td><td class='term'>aplicação fios de pdo</td><td class='num'>20</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="cat-harmonização-full-face">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Harmonização &amp; Full Face</h3>
+            <p>8 palavras · 50.730 buscas/mês · 0 ranqueando</p>
+          </div>
+          <div class="sorter">
+            <button type="button" class="chip active" data-sort="desc">Maior</button>
+            <button type="button" class="chip" data-sort="asc">Menor</button>
+          </div>
+        </header>
+        <div class="scroll">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th class="idx">#</th>
+                <th>Termo</th>
+                <th class="num sortable">Pesquisa/mês</th>
+                <th>Funil</th>
+                <th>Posição</th>
+              </tr>
+            </thead>
+            <tbody><tr data-volume='49500' data-pos='0'><td class='idx'>1</td><td class='term'>harmonização facial</td><td class='num'>49.500</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='390' data-pos='0'><td class='idx'>2</td><td class='term'>harmonização full face</td><td class='num'>390</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='320' data-pos='0'><td class='idx'>3</td><td class='term'>como funciona a harmonização facial</td><td class='num'>320</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='260' data-pos='0'><td class='idx'>4</td><td class='term'>clínica de estética facial</td><td class='num'>260</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='110' data-pos='0'><td class='idx'>5</td><td class='term'>benefícios do ácido hialurônico no rosto</td><td class='num'>110</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='90' data-pos='0'><td class='idx'>6</td><td class='term'>o que e harmonizacao facial</td><td class='num'>90</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='50' data-pos='0'><td class='idx'>7</td><td class='term'>clínica full face</td><td class='num'>50</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='10' data-pos='0'><td class='idx'>8</td><td class='term'>como rejuvenescer o rosto sem cirurgia</td><td class='num'>10</td><td><span class='pill topo'>Topo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="cat-lipo-de-papada">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Lipo de papada</h3>
+            <p>2 palavras · 12.190 buscas/mês · 0 ranqueando</p>
+          </div>
+          <div class="sorter">
+            <button type="button" class="chip active" data-sort="desc">Maior</button>
+            <button type="button" class="chip" data-sort="asc">Menor</button>
+          </div>
+        </header>
+        <div class="scroll">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th class="idx">#</th>
+                <th>Termo</th>
+                <th class="num sortable">Pesquisa/mês</th>
+                <th>Funil</th>
+                <th>Posição</th>
+              </tr>
+            </thead>
+            <tbody><tr data-volume='12100' data-pos='0'><td class='idx'>1</td><td class='term'>lipoaspiracao de papada</td><td class='num'>12.100</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr><tr data-volume='90' data-pos='0'><td class='idx'>2</td><td class='term'>eliminar papada sem cirurgia</td><td class='num'>90</td><td><span class='pill meio'>Meio</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="cat-branding">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Branding</h3>
+            <p>1 palavras · 50 buscas/mês · 0 ranqueando</p>
+          </div>
+          <div class="sorter">
+            <button type="button" class="chip active" data-sort="desc">Maior</button>
+            <button type="button" class="chip" data-sort="asc">Menor</button>
+          </div>
+        </header>
+        <div class="scroll">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th class="idx">#</th>
+                <th>Termo</th>
+                <th class="num sortable">Pesquisa/mês</th>
+                <th>Funil</th>
+                <th>Posição</th>
+              </tr>
+            </thead>
+            <tbody><tr data-volume='50' data-pos='0'><td class='idx'>1</td><td class='term'>luana meireles</td><td class='num'>50</td><td><span class='pill fundo'>Fundo</span></td><td class='rank-cell'><span class='rank none'>—</span></td></tr></tbody>
+          </table>
+        </div>
+      </section></div>
+    </div>
+    <div id="view-concorrencia" class="panel-view">
+    <section class="callout">
+      <span class="callout-badge">Conclusão</span>
+      <h2>Existem diversas categorias com dificuldade Fácil ou Média</h2>
+      <p>Há espaço real para competir com conteúdo e autoridade nas categorias abaixo, onde a marca dos concorrentes não supera 3× a referência do Dra. Luana Meireles (1 buscas de marca).</p>
+      <div class="conc-lists">
+        <div>
+          <span class="list-label">Categorias com oportunidade (Fácil / Média)</span>
+          <div class="tags"><span class='tag op'>Otomodelação</span><span class='tag op'>Preenchimentos faciais</span><span class='tag op'>Harmonização &amp; Full Face</span><span class='tag op'>Lipo de papada</span></div>
+        </div>
+        <div>
+          <span class="list-label">Categorias difíceis</span>
+          <div class="tags"><span class='tag hard'>Bioestimuladores</span><span class='tag hard'>Fios de PDO &amp; lifting</span><span class='tag hard'>Branding</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="split">
+      <section class="panel soft">
+        <header class="panel-head"><div class="panel-title"><h3>Dificuldade por categoria</h3><p>Distribuição dos top 5 do Google</p></div></header>
+        <div class="dbars">
+          <div class="dbar-row">
+            <span class="dbar-name">Otomodelação</span>
+            <div class="dbar">
+              <span class="seg facil" style="width:60.0%" title="Fácil: 9"></span>
+              <span class="seg medio" style="width:0.0%" title="Médio: 0"></span>
+              <span class="seg dificil" style="width:40.0%" title="Difícil: 6"></span>
+            </div>
+            <span class="dbar-meta">9/0/6</span>
+          </div>
+          <div class="dbar-row">
+            <span class="dbar-name">Preenchimentos faciais</span>
+            <div class="dbar">
+              <span class="seg facil" style="width:73.3%" title="Fácil: 11"></span>
+              <span class="seg medio" style="width:0.0%" title="Médio: 0"></span>
+              <span class="seg dificil" style="width:26.7%" title="Difícil: 4"></span>
+            </div>
+            <span class="dbar-meta">11/0/4</span>
+          </div>
+          <div class="dbar-row">
+            <span class="dbar-name">Bioestimuladores</span>
+            <div class="dbar">
+              <span class="seg facil" style="width:40.0%" title="Fácil: 6"></span>
+              <span class="seg medio" style="width:0.0%" title="Médio: 0"></span>
+              <span class="seg dificil" style="width:60.0%" title="Difícil: 9"></span>
+            </div>
+            <span class="dbar-meta">6/0/9</span>
+          </div>
+          <div class="dbar-row">
+            <span class="dbar-name">Fios de PDO &amp; lifting</span>
+            <div class="dbar">
+              <span class="seg facil" style="width:40.0%" title="Fácil: 6"></span>
+              <span class="seg medio" style="width:0.0%" title="Médio: 0"></span>
+              <span class="seg dificil" style="width:60.0%" title="Difícil: 9"></span>
+            </div>
+            <span class="dbar-meta">6/0/9</span>
+          </div>
+          <div class="dbar-row">
+            <span class="dbar-name">Harmonização &amp; Full Face</span>
+            <div class="dbar">
+              <span class="seg facil" style="width:53.3%" title="Fácil: 8"></span>
+              <span class="seg medio" style="width:0.0%" title="Médio: 0"></span>
+              <span class="seg dificil" style="width:46.7%" title="Difícil: 7"></span>
+            </div>
+            <span class="dbar-meta">8/0/7</span>
+          </div>
+          <div class="dbar-row">
+            <span class="dbar-name">Lipo de papada</span>
+            <div class="dbar">
+              <span class="seg facil" style="width:70.0%" title="Fácil: 7"></span>
+              <span class="seg medio" style="width:0.0%" title="Médio: 0"></span>
+              <span class="seg dificil" style="width:30.0%" title="Difícil: 3"></span>
+            </div>
+            <span class="dbar-meta">7/0/3</span>
+          </div>
+          <div class="dbar-row">
+            <span class="dbar-name">Branding</span>
+            <div class="dbar">
+              <span class="seg facil" style="width:0.0%" title="Fácil: 0"></span>
+              <span class="seg medio" style="width:0.0%" title="Médio: 0"></span>
+              <span class="seg dificil" style="width:100.0%" title="Difícil: 4"></span>
+            </div>
+            <span class="dbar-meta">0/0/4</span>
+          </div></div>
+        <div class="legend">
+          <span><i class="sw facil"></i>Fácil &lt; 1</span>
+          <span><i class="sw medio"></i>Médio até 3</span>
+          <span><i class="sw dificil"></i>Difícil &gt; 3</span>
+        </div>
+      </section>
+      <section class="panel soft">
+        <header class="panel-head"><div class="panel-title"><h3>Como ler</h3><p>Metodologia do MVP</p></div></header>
+        <ul class="method">
+          <li><strong>Marca</strong> — tráfego orgânico de buscas com o nome da empresa (branded).</li>
+          <li><strong>Seo</strong> — tráfego orgânico de termos genéricos (non-branded).</li>
+          <li>Top 3 keywords de cada categoria pesquisadas no Google (Brasil).</li>
+          <li>Top 5 resultados + Dra. Luana Meireles na posição 6 como referência.</li>
+          <li>Categoria marcada como difícil quando ≥50% dos resultados são Difícil.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="section-label"><span>Concorrentes por categoria</span></div>
+    <div class="stack">
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Otomodelação</h3>
+            <p>Fácil 9 · Médio 0 · Difícil 6</p>
+          </div>
+          <span class="tag op">Oportunidade</span>
+        </header>
+        
+          <div class="kw">
+            <div class="kw-head">
+              <h4>orelha de abano</h4>
+              <span class="kw-meta">8.100 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>4</td><td class='term'><a href='https://www.hospitalpaulista.com.br/orelha-de-abano-entenda-a-condicao-e-as-alternativas-cirurgicas-para-quem-sofre-com-o-problema/' target='_blank' rel='noopener'>&quot;Orelha de Abano&quot;: entenda a condição e as alternativas ...</a><span class='dom'>hospitalpaulista.com.br</span></td><td class='num strong'>11.382</td><td class='num'>51.193</td><td class='num soft-col'>15.141</td><td class='num soft-col'>134.253</td><td class='num soft-col'>14.200</td><td class='num soft-col'>105.402</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>5</td><td class='term'><a href='https://drrafaelzatz.com.br/orelhas-de-abano-causas-e-tratamentos/' target='_blank' rel='noopener'>Orelhas de Abano: Causas e Como Corrigir</a><span class='dom'>drrafaelzatz.com.br</span></td><td class='num strong'>0</td><td class='num'>10.764</td><td class='num soft-col'>72</td><td class='num soft-col'>13.643</td><td class='num soft-col'>0</td><td class='num soft-col'>7.468</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://www.hospitalinfantilsabara.org.br/noticias/saude-que-salva/cirurgia-para-orelha-de-abano-pode-ser-realizada-a-partir-dos-6-anos' target='_blank' rel='noopener'>Cirurgia para “orelha de abano” pode ser realizada a partir ...</a><span class='dom'>hospitalinfantilsabara.org.br</span></td><td class='num strong'>49.148</td><td class='num'>59.721</td><td class='num soft-col'>46.762</td><td class='num soft-col'>131.183</td><td class='num soft-col'>29.944</td><td class='num soft-col'>264.483</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://projetoorelhinha.com.br/' target='_blank' rel='noopener'>Otoplastia com o Doutor Orelhinha</a><span class='dom'>projetoorelhinha.com.br</span></td><td class='num strong'>2.071</td><td class='num'>15.101</td><td class='num soft-col'>4.124</td><td class='num soft-col'>28.440</td><td class='num soft-col'>4.393</td><td class='num soft-col'>42.880</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://hospitaldaher.com.br/plastica/cirurgias-plasticas-na-face/orelhas-de-abano/' target='_blank' rel='noopener'>Orelhas de Abano - Dr. José Carlos Daher</a><span class='dom'>hospitaldaher.com.br</span></td><td class='num strong'>12.772</td><td class='num'>4.060</td><td class='num soft-col'>21.807</td><td class='num soft-col'>4.694</td><td class='num soft-col'>9.804</td><td class='num soft-col'>2.370</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>otomodelacao</h4>
+              <span class="kw-meta">5.400 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>2</td><td class='term'><a href='https://ricardomaniglia.com.br/otoplastia-ou-otomodelacao/' target='_blank' rel='noopener'>Otoplastia ou Otomodelação: entenda a diferença entre os ...</a><span class='dom'>ricardomaniglia.com.br</span></td><td class='num strong'>0</td><td class='num'>2.192</td><td class='num soft-col'>0</td><td class='num soft-col'>5.601</td><td class='num soft-col'>0</td><td class='num soft-col'>2.123</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://ahof.emnuvens.com.br/ahof/article/view/160/187' target='_blank' rel='noopener'>Vista do OTOMODELAÇÃO: UMA TÉCNICA INOVADORA ...</a><span class='dom'>ahof.emnuvens.com.br</span></td><td class='num strong'>1.981</td><td class='num'>278.883</td><td class='num soft-col'>2.985</td><td class='num soft-col'>205.911</td><td class='num soft-col'>3.081</td><td class='num soft-col'>164.843</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://otomodelacao.drathalitaaraujo.com.br/home' target='_blank' rel='noopener'>OTOMODELAÇÃO - Dra. Thalita Araujo</a><span class='dom'>otomodelacao.drathalitaaraujo.com.br</span></td><td class='num strong'>0</td><td class='num'>209</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>10</td><td class='term'><a href='https://drrafaelzatz.com.br/otoplastia-fechada-riscos-e-opcoes-mais-seguras/' target='_blank' rel='noopener'>Otoplastia fechada: Riscos e opções mais seguras</a><span class='dom'>drrafaelzatz.com.br</span></td><td class='num strong'>0</td><td class='num'>10.764</td><td class='num soft-col'>72</td><td class='num soft-col'>13.643</td><td class='num soft-col'>0</td><td class='num soft-col'>7.468</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>11</td><td class='term'><a href='https://www.clinicaalegre.pt/medicina-estetica/otomodelacao' target='_blank' rel='noopener'>Otomodelação - Correção das Orelhas de Abano</a><span class='dom'>clinicaalegre.pt</span></td><td class='num strong'>0</td><td class='num'>49</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td class='num soft-col'>73</td><td><span class='diff facil'>Fácil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>otoplastia sem cirurgia</h4>
+              <span class="kw-meta">70 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>2</td><td class='term'><a href='https://drrafaelzatz.com.br/por-que-nao-realizar-a-otoplastia-fechada/' target='_blank' rel='noopener'>Por que não realizar a otoplastia fechada</a><span class='dom'>drrafaelzatz.com.br</span></td><td class='num strong'>0</td><td class='num'>10.764</td><td class='num soft-col'>72</td><td class='num soft-col'>13.643</td><td class='num soft-col'>0</td><td class='num soft-col'>7.468</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>5</td><td class='term'><a href='https://www.otoone.com.br/post/otoplastia-sem-incisao-orelhas-de-abano' target='_blank' rel='noopener'>Otoplastia sem incisão- Otomodelação</a><span class='dom'>otoone.com.br</span></td><td class='num strong'>0</td><td class='num'>25.598</td><td class='num soft-col'>0</td><td class='num soft-col'>84.424</td><td class='num soft-col'>0</td><td class='num soft-col'>58.598</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://ricardomaniglia.com.br/otoplastia-ou-otomodelacao/' target='_blank' rel='noopener'>Otoplastia ou Otomodelação: entenda a diferença entre os ...</a><span class='dom'>ricardomaniglia.com.br</span></td><td class='num strong'>0</td><td class='num'>2.192</td><td class='num soft-col'>0</td><td class='num soft-col'>5.601</td><td class='num soft-col'>0</td><td class='num soft-col'>2.123</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.drricardosilveira.com.br/otoplastia-sem-cicatriz-mitos-e-verdades' target='_blank' rel='noopener'>Otoplastia sem cicatriz: mitos e verdades</a><span class='dom'>drricardosilveira.com.br</span></td><td class='num strong'>0</td><td class='num'>1.521</td><td class='num soft-col'>0</td><td class='num soft-col'>12.677</td><td class='num soft-col'>0</td><td class='num soft-col'>16.721</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>11</td><td class='term'><a href='https://projetoorelhinha.com.br/correcao-orelha-abano/' target='_blank' rel='noopener'>Correção da Orelha de Abano: Conheça 3 Opções</a><span class='dom'>projetoorelhinha.com.br</span></td><td class='num strong'>2.071</td><td class='num'>15.101</td><td class='num soft-col'>4.124</td><td class='num soft-col'>28.440</td><td class='num soft-col'>4.393</td><td class='num soft-col'>42.880</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+      </section>
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Preenchimentos faciais</h3>
+            <p>Fácil 11 · Médio 0 · Difícil 4</p>
+          </div>
+          <span class="tag op">Oportunidade</span>
+        </header>
+        
+          <div class="kw">
+            <div class="kw-head">
+              <h4>preenchimento labial</h4>
+              <span class="kw-meta">49.500 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>5</td><td class='term'><a href='https://www.carumoreno.com.br/2025/11/28/preenchimento-labial-valor-riscos-e-o-que-nunca-fazer/?srsltid=AU7gw4WVHc4KkFTeLTggIgortPftPDVpk6szyq-k1tRDnFuE5ChqdVCj' target='_blank' rel='noopener'>Preenchimento Labial: Valor, Riscos e O que NUNCA fazer!</a><span class='dom'>carumoreno.com.br</span></td><td class='num strong'>5</td><td class='num'>72.155</td><td class='num soft-col'>0</td><td class='num soft-col'>8.603</td><td class='num soft-col'>0</td><td class='num soft-col'>11.535</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://www.galdermaaesthetics.com.br/preenchimento-labial' target='_blank' rel='noopener'>Preenchimento labial: saiba tudo sobre o procedimento</a><span class='dom'>galdermaaesthetics.com.br</span></td><td class='num strong'>0</td><td class='num'>16.991</td><td class='num soft-col'>8.833</td><td class='num soft-col'>28.875</td><td class='num soft-col'>8.593</td><td class='num soft-col'>20.903</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://drdanielstellin.com.br/dermatologia-estetica/preenchimento-labial/' target='_blank' rel='noopener'>Preenchimento Labial</a><span class='dom'>drdanielstellin.com.br</span></td><td class='num strong'>0</td><td class='num'>35.083</td><td class='num soft-col'>0</td><td class='num soft-col'>59.500</td><td class='num soft-col'>0</td><td class='num soft-col'>40.049</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://www.revistaabm.com.br/artigos/preenchimento-labial-beneficios-cuidados-e-quando-fazer-com-seguranca' target='_blank' rel='noopener'>Preenchimento labial: benefícios, cuidados e quando fazer ...</a><span class='dom'>revistaabm.com.br</span></td><td class='num strong'>0</td><td class='num'>19.581</td><td class='num soft-col'>0</td><td class='num soft-col'>112.128</td><td class='num soft-col'>0</td><td class='num soft-col'>128.677</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://blog.dentalspeed.com/preenchimento-labial-efetividade-resultado/' target='_blank' rel='noopener'>Preenchimento Labial: segurança, efetividade e resultado</a><span class='dom'>blog.dentalspeed.com</span></td><td class='num strong'>80.444</td><td class='num'>110.283</td><td class='num soft-col'>75.349</td><td class='num soft-col'>131.238</td><td class='num soft-col'>95.997</td><td class='num soft-col'>118.456</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>preenchimento de olheiras</h4>
+              <span class="kw-meta">14.800 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>6</td><td class='term'><a href='https://www.galdermaaesthetics.com.br/preenchimento-de-olheiras' target='_blank' rel='noopener'>Preenchimento de olheiras: o que é, benefícios e como ...</a><span class='dom'>galdermaaesthetics.com.br</span></td><td class='num strong'>0</td><td class='num'>16.991</td><td class='num soft-col'>8.833</td><td class='num soft-col'>28.875</td><td class='num soft-col'>8.593</td><td class='num soft-col'>20.903</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://clinicacarreirao.com.br/preenchimento-de-olheiras-os-3-principais-erros/' target='_blank' rel='noopener'>Preenchimento de olheiras: os 3 principais erros</a><span class='dom'>clinicacarreirao.com.br</span></td><td class='num strong'>0</td><td class='num'>1.648</td><td class='num soft-col'>0</td><td class='num soft-col'>5.591</td><td class='num soft-col'>0</td><td class='num soft-col'>4.434</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://drdanielstellin.com.br/dermatologia-estetica/preenchimento-de-olheiras/' target='_blank' rel='noopener'>Preenchimento de Olheiras</a><span class='dom'>drdanielstellin.com.br</span></td><td class='num strong'>0</td><td class='num'>35.083</td><td class='num soft-col'>0</td><td class='num soft-col'>59.500</td><td class='num soft-col'>0</td><td class='num soft-col'>40.049</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://clinicarenasce.com.br/blog/preenchimento-de-olheiras-antes-e-depois/' target='_blank' rel='noopener'>Olheiras antes e depois: o resultado real do preenchimento</a><span class='dom'>clinicarenasce.com.br</span></td><td class='num strong'>0</td><td class='num'>42.068</td><td class='num soft-col'>136</td><td class='num soft-col'>0</td><td class='num soft-col'>72</td><td class='num soft-col'>62</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>10</td><td class='term'><a href='https://www.loreal-paris.com.br/preenchimento-de-olheiras' target='_blank' rel='noopener'>Preenchimento de olheiras: o que é e como fazer?</a><span class='dom'>loreal-paris.com.br</span></td><td class='num strong'>68.693</td><td class='num'>506.728</td><td class='num soft-col'>117.559</td><td class='num soft-col'>1.692.015</td><td class='num soft-col'>238.584</td><td class='num soft-col'>1.109.583</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>preenchimento bigode chinês</h4>
+              <span class="kw-meta">5.400 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>6</td><td class='term'><a href='https://drdanielstellin.com.br/dermatologia-estetica/preenchimento-bigode-chines/' target='_blank' rel='noopener'>Preenchimento de bigode chinês: como é realizado?</a><span class='dom'>drdanielstellin.com.br</span></td><td class='num strong'>0</td><td class='num'>35.083</td><td class='num soft-col'>0</td><td class='num soft-col'>59.500</td><td class='num soft-col'>0</td><td class='num soft-col'>40.049</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://globoplay.globo.com/v/5423193/' target='_blank' rel='noopener'>Resultados de preenchimento para disfarçar marcas de ruga ...</a><span class='dom'>globoplay.globo.com</span></td><td class='num strong'>128.162.319</td><td class='num'>153.685.364</td><td class='num soft-col'>136.663.733</td><td class='num soft-col'>172.125.463</td><td class='num soft-col'>151.494.407</td><td class='num soft-col'>158.781.521</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://mariofarinazzo.com.br/cuidados-apos-o-preenchimento-do-bigode-chines/' target='_blank' rel='noopener'>Cuidados após o preenchimento do bigode chinês</a><span class='dom'>mariofarinazzo.com.br</span></td><td class='num strong'>0</td><td class='num'>14.423</td><td class='num soft-col'>0</td><td class='num soft-col'>30.606</td><td class='num soft-col'>72</td><td class='num soft-col'>21.201</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://clinicarenasce.com.br/blog/preenchimento-bigode-chines/' target='_blank' rel='noopener'>Preenchimento bigode chinês: como é, valor e quanto dura</a><span class='dom'>clinicarenasce.com.br</span></td><td class='num strong'>0</td><td class='num'>42.068</td><td class='num soft-col'>136</td><td class='num soft-col'>0</td><td class='num soft-col'>72</td><td class='num soft-col'>62</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>10</td><td class='term'><a href='https://www.julianatoma.com.br/bigode-chines-preenchimento-ou-bioestimulador-como-escolher-o-melhor-tratamento/' target='_blank' rel='noopener'>Bigode Chinês: Preenchimento ou Bioestimulador? Como ...</a><span class='dom'>julianatoma.com.br</span></td><td class='num strong'>0</td><td class='num'>69.126</td><td class='num soft-col'>0</td><td class='num soft-col'>158.420</td><td class='num soft-col'>0</td><td class='num soft-col'>36.302</td><td><span class='diff facil'>Fácil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+      </section>
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Bioestimuladores</h3>
+            <p>Fácil 6 · Médio 0 · Difícil 9</p>
+          </div>
+          <span class="tag hard">Difícil</span>
+        </header>
+        
+          <div class="kw">
+            <div class="kw-head">
+              <h4>sculptra</h4>
+              <span class="kw-meta">33.100 buscas/mês · Meio</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>4</td><td class='term'><a href='https://www.dentalcremer.com.br/bioestimulador-de-colageno-sculptra-galderma-158078.html?srsltid=AU7gw4WCTxgsID_s8Md87RfR1nrm98Rj95s1ipAY7Rvsi-S4Qo0LoFzB' target='_blank' rel='noopener'>Bioestimulador de Colágeno Sculptra - Galderma</a><span class='dom'>dentalcremer.com.br</span></td><td class='num strong'>174.461</td><td class='num'>219.478</td><td class='num soft-col'>174.868</td><td class='num soft-col'>288.610</td><td class='num soft-col'>150.989</td><td class='num soft-col'>217.634</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://www.galdermaaesthetics.com.br/bioestimulador-recuperacao-firmeza-cutanea' target='_blank' rel='noopener'>Bioestimulador: recupere a firmeza cutânea com Sculptra</a><span class='dom'>galdermaaesthetics.com.br</span></td><td class='num strong'>0</td><td class='num'>16.991</td><td class='num soft-col'>8.833</td><td class='num soft-col'>28.875</td><td class='num soft-col'>8.593</td><td class='num soft-col'>20.903</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://rachelgarcia.com.br/publicacoes/sculptra' target='_blank' rel='noopener'>Sculptra – Tudo o que você precisa saber sobre este ...</a><span class='dom'>rachelgarcia.com.br</span></td><td class='num strong'>0</td><td class='num'>358</td><td class='num soft-col'>0</td><td class='num soft-col'>742</td><td class='num soft-col'>0</td><td class='num soft-col'>784</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://www.rcommed.com.br/sculptra-bioestimulador-de-colageno-01-frasco-galderma?srsltid=AU7gw4X7Z84zAuVG7z0ykBIPVtVEzw2zzEXJzNBjyost5FUP6_xAG3_h' target='_blank' rel='noopener'>Bioestimulador de Colágeno Sculptra 1 Frasco – Galderma</a><span class='dom'>rcommed.com.br</span></td><td class='num strong'>0</td><td class='num'>169</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.gabrielgontijo.com.br/esteticos/sculptra/' target='_blank' rel='noopener'>Sculptra</a><span class='dom'>gabrielgontijo.com.br</span></td><td class='num strong'>0</td><td class='num'>1.137</td><td class='num soft-col'>0</td><td class='num soft-col'>4.737</td><td class='num soft-col'>0</td><td class='num soft-col'>6.632</td><td><span class='diff facil'>Fácil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>radiesse</h4>
+              <span class="kw-meta">18.100 buscas/mês · Meio</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>6</td><td class='term'><a href='https://dreniogiacchetto.com.br/nao-cirurgicos/radiesse/' target='_blank' rel='noopener'>Radiesse: o que é, benefícios e contraindicações</a><span class='dom'>dreniogiacchetto.com.br</span></td><td class='num strong'>0</td><td class='num'>597</td><td class='num soft-col'>0</td><td class='num soft-col'>442</td><td class='num soft-col'>0</td><td class='num soft-col'>17.226</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://cotadental.com.br/bioestimulador-de-colageno-radiesse-lidocaine-1-5cc-1-5ml-merz?srsltid=AU7gw4UdO8h9W8yXvaZv31RhXZc4zjnT-Zo5diZQ4MIU4vLmkgqbnvrN' target='_blank' rel='noopener'>Bioestimulador de Colágeno Radiesse + Lidocaine 1,5cc ...</a><span class='dom'>cotadental.com.br</span></td><td class='num strong'>208</td><td class='num'>714</td><td class='num soft-col'>88</td><td class='num soft-col'>1.386</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.dermaclub.com.br/blog/rosto/radiesse.html?srsltid=AU7gw4XtBwYcCtsGT3mpvnZA6I4o4hmF_7K5SC2Ssxbi9lGZJpVaJzeY' target='_blank' rel='noopener'>Radiesse: o que é, diferença do Sculptra e cuidados pós</a><span class='dom'>dermaclub.com.br</span></td><td class='num strong'>34.935</td><td class='num'>293.223</td><td class='num soft-col'>56.952</td><td class='num soft-col'>749.791</td><td class='num soft-col'>73.118</td><td class='num soft-col'>428.876</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>10</td><td class='term'><a href='https://www.bonaticompany.com.br/dentistica-e-estetica/facial/bioestimulador/bioestimulador-hidroxiapatita-de-calcio-radiesse-3-ml-merz?srsltid=AU7gw4V3NQYNDwASptUR-dYppJ89ZjLS_rLAwm2DYbj8e5fXykabEazO' target='_blank' rel='noopener'>Bioestimulador Hidroxiapatita de Cálcio Radiesse 3 ml</a><span class='dom'>bonaticompany.com.br</span></td><td class='num strong'>1.272</td><td class='num'>22.811</td><td class='num soft-col'>1.258</td><td class='num soft-col'>6.381</td><td class='num soft-col'>784</td><td class='num soft-col'>14.514</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>11</td><td class='term'><a href='https://www.carumoreno.com.br/2025/06/02/radiesse-antes-e-depois-descubra-se-vale-o-investimento/?srsltid=AU7gw4UHzdgQlA8Jq8drVJt3VzRigv4eJV-YUZS9EN0SLAZEJx4revMd' target='_blank' rel='noopener'>Radiesse Antes e Depois: Descubra se Vale o Investimento!</a><span class='dom'>carumoreno.com.br</span></td><td class='num strong'>5</td><td class='num'>72.155</td><td class='num soft-col'>0</td><td class='num soft-col'>8.603</td><td class='num soft-col'>0</td><td class='num soft-col'>11.535</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>bioestimuladores de colágeno</h4>
+              <span class="kw-meta">3.600 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>2</td><td class='term'><a href='https://www.eudora.com.br/guia-da-beleza/como-funciona-o-bioestimulador-de-colageno-na-pele/' target='_blank' rel='noopener'>Como funciona o bioestimulador de colágeno na pele</a><span class='dom'>eudora.com.br</span></td><td class='num strong'>612.682</td><td class='num'>189.098</td><td class='num soft-col'>3.200.034</td><td class='num soft-col'>290.871</td><td class='num soft-col'>2.721.118</td><td class='num soft-col'>257.882</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>4</td><td class='term'><a href='https://www.tuasaude.com/bioestimulador-de-colageno/' target='_blank' rel='noopener'>Bioestimulador de colágeno: o que é, benefícios, tipos e ...</a><span class='dom'>tuasaude.com</span></td><td class='num strong'>5.789</td><td class='num'>12.298.596</td><td class='num soft-col'>349.498</td><td class='num soft-col'>28.710.258</td><td class='num soft-col'>24.440</td><td class='num soft-col'>12.489.761</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://ojs.focopublicacoes.com.br/foco/article/view/6038' target='_blank' rel='noopener'>BIOESTIMULADORES DE COLÁGENO INJETÁVEIS</a><span class='dom'>ojs.focopublicacoes.com.br</span></td><td class='num strong'>1.087</td><td class='num'>27.560</td><td class='num soft-col'>1.280</td><td class='num soft-col'>12.765</td><td class='num soft-col'>1.628</td><td class='num soft-col'>1.279</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://www.suryadental.com.br/harmonizacao-orofacial/bioestimulador.html?srsltid=AU7gw4WFFpmWUPbiWcUAfTFmUDj9q-BkKjCZV5kPr36HUTGYN-DVWxlv' target='_blank' rel='noopener'>Bioestimuladores de colágeno: Rennova Elleva e Sculptra</a><span class='dom'>suryadental.com.br</span></td><td class='num strong'>17.359</td><td class='num'>62.739</td><td class='num soft-col'>18.879</td><td class='num soft-col'>94.981</td><td class='num soft-col'>25.572</td><td class='num soft-col'>70.273</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.galdermaaesthetics.com.br/colageno-para-pele-flacida' target='_blank' rel='noopener'>Colágeno para pele flácida: recuperação com bioestimulador</a><span class='dom'>galdermaaesthetics.com.br</span></td><td class='num strong'>0</td><td class='num'>16.991</td><td class='num soft-col'>8.833</td><td class='num soft-col'>28.875</td><td class='num soft-col'>8.593</td><td class='num soft-col'>20.903</td><td><span class='diff facil'>Fácil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+      </section>
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Fios de PDO &amp; lifting</h3>
+            <p>Fácil 6 · Médio 0 · Difícil 9</p>
+          </div>
+          <span class="tag hard">Difícil</span>
+        </header>
+        
+          <div class="kw">
+            <div class="kw-head">
+              <h4>fios de pdo</h4>
+              <span class="kw-meta">14.800 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>6</td><td class='term'><a href='https://clinicamarinaceruti.com.br/mitos-e-verdade-sobre-fios-de-pdo/' target='_blank' rel='noopener'>15 mitos e verdade sobre Fios de PDO: saiba o que é real ...</a><span class='dom'>clinicamarinaceruti.com.br</span></td><td class='num strong'>0</td><td class='num'>3.816</td><td class='num soft-col'>0</td><td class='num soft-col'>2.095</td><td class='num soft-col'>0</td><td class='num soft-col'>1.361</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://clinicafioravanti.com.br/dermatologia/fios-de-pdo/' target='_blank' rel='noopener'>Fios de PDO: o que são e indicações</a><span class='dom'>clinicafioravanti.com.br</span></td><td class='num strong'>0</td><td class='num'>5.171</td><td class='num soft-col'>0</td><td class='num soft-col'>40.898</td><td class='num soft-col'>0</td><td class='num soft-col'>9.415</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://royalface.com.br/fios-de-pdo-antes-e-depois/' target='_blank' rel='noopener'>Fios de PDO: antes e depois</a><span class='dom'>royalface.com.br</span></td><td class='num strong'>1.491</td><td class='num'>11.606</td><td class='num soft-col'>1.457</td><td class='num soft-col'>42.715</td><td class='num soft-col'>11.992</td><td class='num soft-col'>10.747</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.onodera.com.br/blog-onodera/lifting-com-fios-de-pdo?srsltid=AU7gw4U_PiL7omtyR9Ml3b1NadUHXei_BtOS8RZpcvr3OF58XpvPs555' target='_blank' rel='noopener'>Lifting com Fios de PDO: Rejuvenescimento e Lifting Facial</a><span class='dom'>onodera.com.br</span></td><td class='num strong'>6.887</td><td class='num'>36.596</td><td class='num soft-col'>11.603</td><td class='num soft-col'>53.245</td><td class='num soft-col'>8.913</td><td class='num soft-col'>33.408</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>10</td><td class='term'><a href='https://nepuga.edu.br/curso-fios-pdo-facial/' target='_blank' rel='noopener'>Curso Fios PDO Facial</a><span class='dom'>nepuga.edu.br</span></td><td class='num strong'>12.261</td><td class='num'>3.292</td><td class='num soft-col'>18.697</td><td class='num soft-col'>4.858</td><td class='num soft-col'>13.617</td><td class='num soft-col'>8.654</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>fios de sustentacao</h4>
+              <span class="kw-meta">4.400 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>5</td><td class='term'><a href='https://www.tuasaude.com/fios-de-sustentacao/' target='_blank' rel='noopener'>Fios de sustentação: o que são, para que servem, como ...</a><span class='dom'>tuasaude.com</span></td><td class='num strong'>5.789</td><td class='num'>12.298.596</td><td class='num soft-col'>349.498</td><td class='num soft-col'>28.710.258</td><td class='num soft-col'>24.440</td><td class='num soft-col'>12.489.761</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://royalface.com.br/estetica-facial/fios-de-sustentacao/' target='_blank' rel='noopener'>Fios de Sustentação- Royal Face | Clínica de Estética Facial</a><span class='dom'>royalface.com.br</span></td><td class='num strong'>1.491</td><td class='num'>11.606</td><td class='num soft-col'>1.457</td><td class='num soft-col'>42.715</td><td class='num soft-col'>11.992</td><td class='num soft-col'>10.747</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://drauziovarella.uol.com.br/dermatologia/fios-de-sustentacao-ajudam-no-rejuvenescimento-da-pele-saiba-como-funcionam/' target='_blank' rel='noopener'>Fios de sustentação ajudam no rejuvenescimento da pele</a><span class='dom'>drauziovarella.uol.com.br</span></td><td class='num strong'>26.429.277</td><td class='num'>61.977.592</td><td class='num soft-col'>35.398.989</td><td class='num soft-col'>117.737.880</td><td class='num soft-col'>42.488.831</td><td class='num soft-col'>183.745.345</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://clinicafioravanti.com.br/fios-de-sustentacao/' target='_blank' rel='noopener'>Fios de sustentação: quando fazer e para que serve?</a><span class='dom'>clinicafioravanti.com.br</span></td><td class='num strong'>0</td><td class='num'>5.171</td><td class='num soft-col'>0</td><td class='num soft-col'>40.898</td><td class='num soft-col'>0</td><td class='num soft-col'>9.415</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://blog.redeioa.com.br/fios-de-sustentacao/' target='_blank' rel='noopener'>Fios de sustentação: técnicas para harmonização facial</a><span class='dom'>blog.redeioa.com.br</span></td><td class='num strong'>6.055</td><td class='num'>13.720</td><td class='num soft-col'>1.600</td><td class='num soft-col'>1.539</td><td class='num soft-col'>4.248</td><td class='num soft-col'>607</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>para que serve fios de pdo</h4>
+              <span class="kw-meta">170 buscas/mês · Topo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>6</td><td class='term'><a href='https://clinicaduarte.med.br/blog/quais-sao-os-cuidados-apos-colocar-fios-de-pdo' target='_blank' rel='noopener'>QUAIS SÃO OS CUIDADOS APÓS COLOCAR FIOS DE PDO</a><span class='dom'>clinicaduarte.med.br</span></td><td class='num strong'>320</td><td class='num'>5.176</td><td class='num soft-col'>368</td><td class='num soft-col'>48.479</td><td class='num soft-col'>312</td><td class='num soft-col'>79.975</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://clinicarenasce.com.br/blog/fios-pdo-o-que-sao/' target='_blank' rel='noopener'>Fios de PDO: o que são, para que servem e resultados</a><span class='dom'>clinicarenasce.com.br</span></td><td class='num strong'>0</td><td class='num'>42.068</td><td class='num soft-col'>136</td><td class='num soft-col'>0</td><td class='num soft-col'>72</td><td class='num soft-col'>62</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://www.gazetadopovo.com.br/conteudo-publicitario/dra-isabela-pitta/fios-de-pdo-o-que-sao-os-fios-de-sustentacao/' target='_blank' rel='noopener'>Fios de PDO: o que são os fios de sustentação?</a><span class='dom'>gazetadopovo.com.br</span></td><td class='num strong'>331.210</td><td class='num'>2.687.041</td><td class='num soft-col'>280.502</td><td class='num soft-col'>2.063.921</td><td class='num soft-col'>280.443</td><td class='num soft-col'>1.978.337</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://mairaplatero.com.br/estetica/fios-de-pdo-o-que-sao-como-funciona/' target='_blank' rel='noopener'>Fios de PDO: O que são? Para que serve? Como funciona?</a><span class='dom'>mairaplatero.com.br</span></td><td class='num strong'>0</td><td class='num'>854</td><td class='num soft-col'>0</td><td class='num soft-col'>3.715</td><td class='num soft-col'>0</td><td class='num soft-col'>1.612</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>11</td><td class='term'><a href='https://clinicafioravanti.com.br/fios-de-sustentacao/' target='_blank' rel='noopener'>Fios de sustentação: quando fazer e para que serve?</a><span class='dom'>clinicafioravanti.com.br</span></td><td class='num strong'>0</td><td class='num'>5.171</td><td class='num soft-col'>0</td><td class='num soft-col'>40.898</td><td class='num soft-col'>0</td><td class='num soft-col'>9.415</td><td><span class='diff facil'>Fácil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+      </section>
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Harmonização &amp; Full Face</h3>
+            <p>Fácil 8 · Médio 0 · Difícil 7</p>
+          </div>
+          <span class="tag op">Oportunidade</span>
+        </header>
+        
+          <div class="kw">
+            <div class="kw-head">
+              <h4>harmonização facial</h4>
+              <span class="kw-meta">49.500 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>8</td><td class='term'><a href='https://drdanielstellin.com.br/dermatologia-estetica/harmonizacao-facial/' target='_blank' rel='noopener'>Harmonização Facial: O que é? Como é feita?</a><span class='dom'>drdanielstellin.com.br</span></td><td class='num strong'>0</td><td class='num'>35.083</td><td class='num soft-col'>0</td><td class='num soft-col'>59.500</td><td class='num soft-col'>0</td><td class='num soft-col'>40.049</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.einstein.br/n/vida-saudavel/harmonizacao-facial-conheca-as-indicacoes-e-os-riscos-do-procedimento' target='_blank' rel='noopener'>“Harmonização facial”: conheça as indicações e os riscos ...</a><span class='dom'>einstein.br</span></td><td class='num strong'>163.843</td><td class='num'>7.729.994</td><td class='num soft-col'>555.132</td><td class='num soft-col'>5.386.094</td><td class='num soft-col'>521.466</td><td class='num soft-col'>3.782.633</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>10</td><td class='term'><a href='https://www.saudebemestar.pt/pt/medicina/medicina-estetica/harmonizacao-facial/' target='_blank' rel='noopener'>Harmonização Facial - o que é, técnicas utilizadas ...</a><span class='dom'>saudebemestar.pt</span></td><td class='num strong'>0</td><td class='num'>743.123</td><td class='num soft-col'>257</td><td class='num soft-col'>1.008.595</td><td class='num soft-col'>0</td><td class='num soft-col'>1.414.068</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>12</td><td class='term'><a href='http://rbcp.org.br/news/61' target='_blank' rel='noopener'>Harmonização facial: o que é e por que está tão em alta</a><span class='dom'>rbcp.org.br</span></td><td class='num strong'>112</td><td class='num'>55.447</td><td class='num soft-col'>200</td><td class='num soft-col'>59.125</td><td class='num soft-col'>224</td><td class='num soft-col'>66.703</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>13</td><td class='term'><a href='https://mariofarinazzo.com.br/harmonizacao-facial-valor/' target='_blank' rel='noopener'>Harmonização facial: qual é o valor do procedimento estético</a><span class='dom'>mariofarinazzo.com.br</span></td><td class='num strong'>0</td><td class='num'>14.423</td><td class='num soft-col'>0</td><td class='num soft-col'>30.606</td><td class='num soft-col'>72</td><td class='num soft-col'>21.201</td><td><span class='diff facil'>Fácil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>harmonização full face</h4>
+              <span class="kw-meta">390 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>5</td><td class='term'><a href='https://drdanielstellin.com.br/harmonizacao-full-face/' target='_blank' rel='noopener'>O que é harmonização full face?</a><span class='dom'>drdanielstellin.com.br</span></td><td class='num strong'>0</td><td class='num'>35.083</td><td class='num soft-col'>0</td><td class='num soft-col'>59.500</td><td class='num soft-col'>0</td><td class='num soft-col'>40.049</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://dramariaclaudia.com.br/procedimentos/full-face' target='_blank' rel='noopener'>Full Face | Dra. Maria Claudia — Harmonização Facial RJ</a><span class='dom'>dramariaclaudia.com.br</span></td><td class='num strong'>0</td><td class='num'>8</td><td class='num soft-col'>0</td><td class='num soft-col'>2</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://blog.redeioa.com.br/full-face/' target='_blank' rel='noopener'>Full face: o que é e como aplicar na odontologia</a><span class='dom'>blog.redeioa.com.br</span></td><td class='num strong'>6.055</td><td class='num'>13.720</td><td class='num soft-col'>1.600</td><td class='num soft-col'>1.539</td><td class='num soft-col'>4.248</td><td class='num soft-col'>607</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://anebason.com.br/o-que-e-que-o-full-face-tem/' target='_blank' rel='noopener'>O que é que o FULL FACE tem? - Dra. Ane Bason</a><span class='dom'>anebason.com.br</span></td><td class='num strong'>0</td><td class='num'>165</td><td class='num soft-col'>0</td><td class='num soft-col'>308</td><td class='num soft-col'>0</td><td class='num soft-col'>305</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.gioesteticaavancada.com.br/dicas-da-gio/voce-conhece-o-full-face-saiba-tudo-sobre-esse-tratamento-facial/' target='_blank' rel='noopener'>Você conhece o Full Face? Saiba tudo sobre esse ...</a><span class='dom'>gioesteticaavancada.com.br</span></td><td class='num strong'>2.002</td><td class='num'>12.073</td><td class='num soft-col'>14.311</td><td class='num soft-col'>30.116</td><td class='num soft-col'>0</td><td class='num soft-col'>0</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>como funciona a harmonização facial</h4>
+              <span class="kw-meta">320 buscas/mês · Topo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>2</td><td class='term'><a href='https://www.einstein.br/n/vida-saudavel/harmonizacao-facial-conheca-as-indicacoes-e-os-riscos-do-procedimento' target='_blank' rel='noopener'>“Harmonização facial”: conheça as indicações e os riscos ...</a><span class='dom'>einstein.br</span></td><td class='num strong'>163.843</td><td class='num'>7.729.994</td><td class='num soft-col'>555.132</td><td class='num soft-col'>5.386.094</td><td class='num soft-col'>521.466</td><td class='num soft-col'>3.782.633</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://www.bv.com.br/bv-inspira/emprestimo-com-garantia-de-veiculo/o-que-e-harmonizacao-facial' target='_blank' rel='noopener'>O que é harmonização facial? Veja este guia sobre o tema!</a><span class='dom'>bv.com.br</span></td><td class='num strong'>300.778</td><td class='num'>130.537</td><td class='num soft-col'>738.188</td><td class='num soft-col'>236.432</td><td class='num soft-col'>911.623</td><td class='num soft-col'>237.360</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://drdanielstellin.com.br/dermatologia-estetica/harmonizacao-facial/' target='_blank' rel='noopener'>Harmonização Facial: O que é? Como é feita?</a><span class='dom'>drdanielstellin.com.br</span></td><td class='num strong'>0</td><td class='num'>35.083</td><td class='num soft-col'>0</td><td class='num soft-col'>59.500</td><td class='num soft-col'>0</td><td class='num soft-col'>40.049</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://www.robertochacur.com/preenchimento/harmonizacao-facial/' target='_blank' rel='noopener'>Harmonização Facial - Preenchimento - Dr. Roberto Chacur</a><span class='dom'>robertochacur.com</span></td><td class='num strong'>0</td><td class='num'>3.625</td><td class='num soft-col'>578</td><td class='num soft-col'>13.270</td><td class='num soft-col'>312</td><td class='num soft-col'>12.458</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.mantecorpskincare.com.br/blog/pele/harmonizacao-facial-tudo-o-que-voce-precisa-saber?srsltid=AU7gw4W3Z0WkHvNu8r_bUSvaBZwp825gsatRkDgzSvQ3Zyok4SJ0r5Hu' target='_blank' rel='noopener'>Harmonização facial: tudo o que você precisa saber!</a><span class='dom'>mantecorpskincare.com.br</span></td><td class='num strong'>13.507</td><td class='num'>170.267</td><td class='num soft-col'>78.495</td><td class='num soft-col'>380.699</td><td class='num soft-col'>69.875</td><td class='num soft-col'>331.172</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+      </section>
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Lipo de papada</h3>
+            <p>Fácil 7 · Médio 0 · Difícil 3</p>
+          </div>
+          <span class="tag op">Oportunidade</span>
+        </header>
+        
+          <div class="kw">
+            <div class="kw-head">
+              <h4>lipoaspiracao de papada</h4>
+              <span class="kw-meta">12.100 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>5</td><td class='term'><a href='https://drjoaopedrobilo.com.br/lipo-de-papada/' target='_blank' rel='noopener'>Lipo de papada: o que é e quais as indicações</a><span class='dom'>drjoaopedrobilo.com.br</span></td><td class='num strong'>0</td><td class='num'>23.287</td><td class='num soft-col'>0</td><td class='num soft-col'>104.116</td><td class='num soft-col'>0</td><td class='num soft-col'>61.114</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://dradrianoassis.com.br/lipo-de-papada/' target='_blank' rel='noopener'>Lipoaspiração de Papada: Elimine o Queixo Duplo</a><span class='dom'>dradrianoassis.com.br</span></td><td class='num strong'>0</td><td class='num'>405</td><td class='num soft-col'>0</td><td class='num soft-col'>1.525</td><td class='num soft-col'>0</td><td class='num soft-col'>1.873</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://mariofarinazzo.com.br/lipo-de-papada-valor/' target='_blank' rel='noopener'>Lipo de papada: qual o valor do procedimento em 2026?</a><span class='dom'>mariofarinazzo.com.br</span></td><td class='num strong'>0</td><td class='num'>14.423</td><td class='num soft-col'>0</td><td class='num soft-col'>30.606</td><td class='num soft-col'>72</td><td class='num soft-col'>21.201</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://www.sercirurgiaplastica.com.br/artigo/quanto-custa-uma-lipo-de-papada' target='_blank' rel='noopener'>Quanto custa uma lipo de papada e quando o procedimento é ...</a><span class='dom'>sercirurgiaplastica.com.br</span></td><td class='num strong'>0</td><td class='num'>52.922</td><td class='num soft-col'>0</td><td class='num soft-col'>165.028</td><td class='num soft-col'>0</td><td class='num soft-col'>29.462</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://saude.abril.com.br/autoestima/lipo-de-papada/' target='_blank' rel='noopener'>Lipo de papada: o que é, para quem é indicada e como não ...</a><span class='dom'>saude.abril.com.br</span></td><td class='num strong'>584.384</td><td class='num'>10.345.808</td><td class='num soft-col'>799.485</td><td class='num soft-col'>11.323.777</td><td class='num soft-col'>1.114.034</td><td class='num soft-col'>9.790.998</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kw">
+            <div class="kw-head">
+              <h4>eliminar papada sem cirurgia</h4>
+              <span class="kw-meta">90 buscas/mês · Meio</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>2</td><td class='term'><a href='https://clinicacarreirao.com.br/como-diminuir-a-papada-sem-cirurgia/' target='_blank' rel='noopener'>Como diminuir a papada sem cirurgia? - Clinica Carreirao</a><span class='dom'>clinicacarreirao.com.br</span></td><td class='num strong'>0</td><td class='num'>1.648</td><td class='num soft-col'>0</td><td class='num soft-col'>5.591</td><td class='num soft-col'>0</td><td class='num soft-col'>4.434</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>5</td><td class='term'><a href='https://www.tuasaude.com/tratamentos-para-eliminar-o-queixo-duplo/' target='_blank' rel='noopener'>Como acabar com a papada do pescoço (queixo duplo)</a><span class='dom'>tuasaude.com</span></td><td class='num strong'>5.789</td><td class='num'>12.298.596</td><td class='num soft-col'>349.498</td><td class='num soft-col'>28.710.258</td><td class='num soft-col'>24.440</td><td class='num soft-col'>12.489.761</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://paulachicralla.com.br/tirar-papada-sem-cirurgia/' target='_blank' rel='noopener'>Como Tirar Papada Sem Cirurgia: Soluções Eficazes e ...</a><span class='dom'>paulachicralla.com.br</span></td><td class='num strong'>0</td><td class='num'>818</td><td class='num soft-col'>0</td><td class='num soft-col'>5.597</td><td class='num soft-col'>0</td><td class='num soft-col'>7.578</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://clinicarenasce.com.br/blog/tratamento-papada-sem-cirurgia/' target='_blank' rel='noopener'>Tratamento de papada sem cirurgia: opções que funcionam</a><span class='dom'>clinicarenasce.com.br</span></td><td class='num strong'>0</td><td class='num'>42.068</td><td class='num soft-col'>136</td><td class='num soft-col'>0</td><td class='num soft-col'>72</td><td class='num soft-col'>62</td><td><span class='diff facil'>Fácil</span></td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://www.ipessp.edu.br/site/blog/blog/como-suavizar-papada-sem-cirurgia/' target='_blank' rel='noopener'>Como suavizar a &quot;papada&quot; sem cirurgia - Blog ...</a><span class='dom'>ipessp.edu.br</span></td><td class='num strong'>1.912</td><td class='num'>870</td><td class='num soft-col'>1.699</td><td class='num soft-col'>4.742</td><td class='num soft-col'>1.864</td><td class='num soft-col'>551</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+      </section>
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Branding</h3>
+            <p>Fácil 0 · Médio 0 · Difícil 4</p>
+          </div>
+          <span class="tag hard">Difícil</span>
+        </header>
+        
+          <div class="kw">
+            <div class="kw-head">
+              <h4>luana meireles</h4>
+              <span class="kw-meta">50 buscas/mês · Fundo</span>
+            </div>
+            <div class="scroll">
+              <table class="grid serp">
+                <thead>
+                  <tr>
+                    <th class="idx">#</th>
+                    <th>Resultado no Google</th>
+                    <th class="num">Marca</th>
+                    <th class="num">Seo</th>
+                    <th class="num soft-col">2025 Marca</th>
+                    <th class="num soft-col">2025 Seo</th>
+                    <th class="num soft-col">2024 Marca</th>
+                    <th class="num soft-col">2024 Seo</th>
+                    <th>Dificuldade</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td class='idx'>3</td><td class='term'><a href='https://www.doctoralia.com.br/luana-meireles/especialista-em-harmonizacao-orofacial/campinas' target='_blank' rel='noopener'>Dra. Luana Meireles - Doctoralia</a><span class='dom'>doctoralia.com.br</span></td><td class='num strong'>150.363</td><td class='num'>2.104.158</td><td class='num soft-col'>263.605</td><td class='num soft-col'>4.330.512</td><td class='num soft-col'>143.515</td><td class='num soft-col'>5.988.085</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>4</td><td class='term'><a href='https://www.jusbrasil.com.br/processos/nome/90061785/luana-meireles' target='_blank' rel='noopener'>Luana Meireles - Processos</a><span class='dom'>jusbrasil.com.br</span></td><td class='num strong'>2.751.221</td><td class='num'>6.763.141</td><td class='num soft-col'>1.751.097</td><td class='num soft-col'>9.285.719</td><td class='num soft-col'>395.538</td><td class='num soft-col'>8.733.217</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://www.escavador.com/nomes/luana-meireles-carvalho-1c105126ea' target='_blank' rel='noopener'>Luana Meireles Carvalho - Processos</a><span class='dom'>escavador.com</span></td><td class='num strong'>169.912</td><td class='num'>943.369</td><td class='num soft-col'>73.516</td><td class='num soft-col'>331.391</td><td class='num soft-col'>11.434</td><td class='num soft-col'>523.776</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://www.tiktok.com/@olaluanameireles' target='_blank' rel='noopener'>Luana Meireles (@olaluanameireles)</a><span class='dom'>tiktok.com</span></td><td class='num strong'>7.073.374</td><td class='num'>23.807.830</td><td class='num soft-col'>5.904.298</td><td class='num soft-col'>37.868.916</td><td class='num soft-col'>7.288.089</td><td class='num soft-col'>21.446.765</td><td><span class='diff dificil'>Difícil</span></td></tr><tr class='jk'><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra. Luana Meireles</a><span class='dom'>draluanameireles.com.br · referência</span></td><td class='num strong'>1</td><td class='num'>128</td><td class='num soft-col'>0</td><td class='num soft-col'>12</td><td class='num soft-col'>0</td><td class='num soft-col'>16</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+              </table>
+            </div>
+          </div>
+      </section></div>
+    </div>
+    <div id="view-programacao" class="panel-view">
+    <section class="callout">
+      <span class="callout-badge">Conclusão</span>
+      <h2>Os critérios básicos de programação estão ok — com uma ressalva</h2>
+      <p>No site <a href="https://draluanameireles.com.br/" target="_blank" rel="noopener">draluanameireles.com.br</a>, código legível pelo Google, meta title, meta description e URLs amigáveis passam. O critério de blog precisa de conferência: não encontramos artigos hospedados no domínio.</p>
+    </section>
+
+    <div class="kpi-grid prog-kpis">
+      <div class="kpi ok-kpi">
+        <span class="kpi-label">Critérios ok</span>
+        <strong class="kpi-value">4</strong>
+        <span class="kpi-hint">Código · Title · Description · URL</span>
+      </div>
+      <div class="kpi bad-kpi">
+        <span class="kpi-label">Critério negativo</span>
+        <strong class="kpi-value">1</strong>
+        <span class="kpi-hint">Blog próprio a confirmar</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Páginas no Google</span>
+        <strong class="kpi-value">10</strong>
+        <span class="kpi-hint">via site:draluanameireles.com.br</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Robots</span>
+        <strong class="kpi-value" style="font-size:1.35rem">index</strong>
+        <span class="kpi-hint">max-image-preview:large</span>
+      </div>
+    </div>
+
+    <div class="crit-list">
+      <article class="crit ok">
+        <header class="crit-head">
+          <span class="crit-num">01</span>
+          <div>
+            <h3>Código legível pelo Google</h3>
+            <p>O HTML é indexável e o Google já carrega páginas do domínio.</p>
+          </div>
+          <span class="crit-badge ok">Ok</span>
+        </header>
+        <div class="crit-body">
+          <p class="crit-note">Comprovação com a busca <code>site:draluanameireles.com.br</code> — páginas retornadas pelo Google:</p>
+          <div class="scroll">
+            <table class="grid">
+              <thead>
+                <tr><th class="idx">#</th><th>Página indexada</th><th>Tipo</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class='idx'>1</td><td class='term'><a href='https://draluanameireles.com.br/' target='_blank' rel='noopener'>Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/</span></td><td>Preenchimento do Sulco Nasolabial (Bigode Chinês). Suaviza o bigode chinês, reduzindo linhas profundas e rejuvenescendo a expressão facial. · Preenchimento ...</td></tr><tr><td class='idx'>2</td><td class='term'><a href='https://draluanameireles.com.br/preenchimento-labial/' target='_blank' rel='noopener'>Preenchimento Labial - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/preenchimento-labial/</span></td><td>O Preenchimento Labial é feito com ácido hialurônico, que é um material preenchedor biocompatível. Os ácidos hialurônicos com maior viscoelasticidade, mais ...</td></tr><tr><td class='idx'>3</td><td class='term'><a href='https://draluanameireles.com.br/otomodelacao-definitiva/' target='_blank' rel='noopener'>Otomodelação Definitiva - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/otomodelacao-definitiva/</span></td><td>A Otomodelação Definitiva é um procedimento minimamente invasivo feito com fios definitivos que são colocados na cartilagem para o fechamento da “orelha de ...</td></tr><tr><td class='idx'>4</td><td class='term'><a href='https://draluanameireles.com.br/full-face/' target='_blank' rel='noopener'>Full Face - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/full-face/</span></td><td>Full Face O Full Face é um procedimento minimamente invasivo feito para corrigir as assimetrias, rugas e imperfeições, melhorando o aspecto da pele do rosto ...</td></tr><tr><td class='idx'>5</td><td class='term'><a href='https://draluanameireles.com.br/estetica-dental/' target='_blank' rel='noopener'>Estética Dental - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/estetica-dental/</span></td><td>A Estética Dental é uma área da Odontologia focada na aparência dos dentes, sendo indicada também para solucionar problemas funcionais e estruturais.</td></tr><tr><td class='idx'>6</td><td class='term'><a href='https://draluanameireles.com.br/toxina-botulinica/' target='_blank' rel='noopener'>Toxina Botulínica - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/toxina-botulinica/</span></td><td>A Toxina Botulínica é uma substância produzida por uma bactéria que bloqueia os movimentos dos músculos, inibindo a formação de rugas.</td></tr><tr><td class='idx'>7</td><td class='term'><a href='https://draluanameireles.com.br/preenchimento-da-mandibula/' target='_blank' rel='noopener'>Preenchimento da Mandíbula - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/preenchimento-da-mandibula/</span></td><td>O Preenchimento da Mandíbula é um procedimento minimamente invasivo feito com aplicações de pequenas quantidades de ácido hialurônico na região da mandíbula ...</td></tr><tr><td class='idx'>8</td><td class='term'><a href='https://draluanameireles.com.br/fios-de-pdo/' target='_blank' rel='noopener'>Fios de PDO - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/fios-de-pdo/</span></td><td>Os Fios de PDO são implantados através de uma pequena cânula, ficando alocados embaixo da pele. A partir do momento em que são injetados os Fios de PDO ...</td></tr><tr><td class='idx'>9</td><td class='term'><a href='https://draluanameireles.com.br/preenchimento-de-olheiras/' target='_blank' rel='noopener'>Preenchimento de Olheiras - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/preenchimento-de-olheiras/</span></td><td>O Preenchimento de Olheiras visa reduzir os sinais de envelhecimento e/ou cansaço, como linhas de expressão, manchas e inchaço.</td></tr><tr><td class='idx'>10</td><td class='term'><a href='https://draluanameireles.com.br/lipo-de-papada/' target='_blank' rel='noopener'>Lipo de Papada - Dra Luana Meirele</a><span class='dom'>https://draluanameireles.com.br/lipo-de-papada/</span></td><td>Esse ácido, que é semelhante ao que é produzido pelo próprio organismo, age na destruição das células que armazenam a gordura. O procedimento é bastante simples ...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="crit ok">
+        <header class="crit-head">
+          <span class="crit-num">02</span>
+          <div>
+            <h3>Meta title</h3>
+            <p>Presente no código-fonte e refletido no título da página / SERP.</p>
+          </div>
+          <span class="crit-badge ok">Ok</span>
+        </header>
+        <div class="crit-body">
+          <div class="meta-proof">
+            <div class="meta-card">
+              <span class="meta-label">No código-fonte</span>
+              <code>&lt;title&gt;Dra. Luana - Dra Luana Meirele&lt;/title&gt;</code>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">No site / Google</span>
+              <strong class="meta-title-preview">Dra. Luana - Dra Luana Meirele</strong>
+              <span class="dom">https://draluanameireles.com.br/</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="crit ok">
+        <header class="crit-head">
+          <span class="crit-num">03</span>
+          <div>
+            <h3>Meta description</h3>
+            <p>Tag <code>meta name="description"</code> presente e preenchida.</p>
+          </div>
+          <span class="crit-badge ok">Ok</span>
+        </header>
+        <div class="crit-body">
+          <div class="meta-proof">
+            <div class="meta-card wide">
+              <span class="meta-label">Descrição encontrada</span>
+              <p class="meta-desc">ClÃ­nica Geral â CROSP 111542 Realce sua melhor versÃ£o ConheÃ§a a OtomodelaÃ§Ã£o Remodele: destaque o que hÃ¡ de melhor em vocÃª e eleve sua autoestima. Descubra a OtomodelaÃ§Ã£o Remodele: nossa tÃ©cnica inovadora que reposiciona suas orelhas de maneira definitiva e sem cortes, realÃ§ando a harmonia natural do seu rosto. Agende seu horÃ¡rio e surpreenda-se! NOSSOS</p>
+              <pre class="source-block">&lt;title&gt;Dra. Luana - Dra Luana Meirele&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;ClÃ­nica Geral â CROSP 111542 Realce sua melhor versÃ£o ConheÃ§a a OtomodelaÃ§Ã£o Remodele: destaque o que hÃ¡ de melhor em vocÃª e eleve sua autoestima. Descubra a OtomodelaÃ§Ã£o Remodele: nossa tÃ©cnica inovadora que reposiciona suas orelhas de maneira definitiva e sem cortes, realÃ§ando a harmonia natural do seu rosto. Agende seu horÃ¡rio e surpreenda-se! NOSSOS&quot;&gt;
+&lt;meta name=&quot;robots&quot; content=&quot;max-image-preview:large&quot;&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="crit ok">
+        <header class="crit-head">
+          <span class="crit-num">04</span>
+          <div>
+            <h3>URL amigável</h3>
+            <p>Paths curtos, legíveis e sem parâmetros dinâmicos desnecessários.</p>
+          </div>
+          <span class="crit-badge ok">Ok</span>
+        </header>
+        <div class="crit-body">
+          <p class="crit-note">Exemplos de URLs do domínio:</p>
+          <div class="url-chips"><span class='url-chip'>/send</span><span class='url-chip'>/draluanameireles/</span></div>
+        </div>
+      </article>
+
+      <article class="crit bad">
+        <header class="crit-head">
+          <span class="crit-num">05</span>
+          <div>
+            <h3>Blog</h3>
+            <p>Não há evidência clara de blog próprio no domínio.</p>
+          </div>
+          <span class="crit-badge bad">Negativo</span>
+        </header>
+        <div class="crit-body">
+          <div class="blog-grid">
+            <div class="meta-card">
+              <span class="meta-label">No menu do site</span>
+              <strong>Blog</strong>
+              <span class="dom">href = /blog/</span>
+              <p class="meta-desc" style="margin-top:10px">Não foram encontrados posts de blog em https://draluanameireles.com.br/blog/.</p>
+            </div>
+            <div class="meta-card warn-card">
+              <span class="meta-label">Destino do conteúdo</span>
+              <a class="medium-link" href="https://draluanameireles.com.br/blog/" target="_blank" rel="noopener">https://draluanameireles.com.br/blog/</a>
+              <p class="meta-desc" style="margin-top:10px">0 posts visíveis na listagem do blog.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    </div>
+    <div id="view-blog" class="panel-view">
+    
+    <section class="callout warn">
+      <span class="callout-badge">Status</span>
+      <h2>Não há blog próprio para avaliar neste momento</h2>
+      <p>Abaixo ficam os <strong>8 fatores</strong> que normalmente analisamos em um blog.</p>
+    </section>
+
+    <div class="kpi-grid blog-kpis">
+      <div class="kpi">
+        <span class="kpi-label">Fatores do framework</span>
+        <strong class="kpi-value">8</strong>
+        <span class="kpi-hint">Checklist padrão de conteúdo</span>
+      </div>
+      <div class="kpi bad-kpi">
+        <span class="kpi-label">Artigos no domínio</span>
+        <strong class="kpi-value">0</strong>
+        <span class="kpi-hint">Listagem do blog</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Posts lidos</span>
+        <strong class="kpi-value">0</strong>
+        <span class="kpi-hint">Amostra para os 8 fatores</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Destino atual</span>
+        <strong class="kpi-value" style="font-size:1.15rem">—</strong>
+        <span class="kpi-hint">sem blog no domínio</span>
+      </div>
+    </div>
+
+    
+
+    <div class="section-label"><span>Fatores que geralmente analisamos</span></div>
+    <div class="factor-grid">
+      <article class="factor-card">
+        <span class="factor-num">01</span>
+        <div>
+          <h3>Cobertura de palavras-chave</h3>
+          <p>Quais termos principais e secundários o artigo cobre, e se a intenção de busca está atendida de ponta a ponta.</p>
+          
+        </div>
+        <span class="factor-status">Não avaliado</span>
+      </article>
+      <article class="factor-card">
+        <span class="factor-num">02</span>
+        <div>
+          <h3>Links internos</h3>
+          <p>Como o post se conecta a outras páginas do site para distribuir autoridade e guiar o leitor no funil.</p>
+          
+        </div>
+        <span class="factor-status">Não avaliado</span>
+      </article>
+      <article class="factor-card">
+        <span class="factor-num">03</span>
+        <div>
+          <h3>Subtópicos</h3>
+          <p>Seções e ângulos que aprofundam o tema central, respondendo perguntas relacionadas que o Google espera ver.</p>
+          
+        </div>
+        <span class="factor-status">Não avaliado</span>
+      </article>
+      <article class="factor-card">
+        <span class="factor-num">04</span>
+        <div>
+          <h3>Índice</h3>
+          <p>Sumário ou âncoras no topo que organizam a leitura, melhoram UX e podem gerar sitelinks no resultado.</p>
+          
+        </div>
+        <span class="factor-status">Não avaliado</span>
+      </article>
+      <article class="factor-card">
+        <span class="factor-num">05</span>
+        <div>
+          <h3>CTA</h3>
+          <p>Chamadas à ação claras (diagnóstico, ebook, contato, lead) alinhadas ao estágio do funil do conteúdo.</p>
+          
+        </div>
+        <span class="factor-status">Não avaliado</span>
+      </article>
+      <article class="factor-card">
+        <span class="factor-num">06</span>
+        <div>
+          <h3>Densidade de palavras</h3>
+          <p>Equilíbrio entre volume de texto, repetição natural do termo e legibilidade — sem stuffing e sem conteúdo raso.</p>
+          
+        </div>
+        <span class="factor-status">Não avaliado</span>
+      </article>
+      <article class="factor-card">
+        <span class="factor-num">07</span>
+        <div>
+          <h3>Autoridade por tópicos</h3>
+          <p>Se o domínio constrói clusters temáticos (outsourcing, cibersegurança, IA, infraestrutura) e reforça expertise ao longo do tempo.</p>
+          
+        </div>
+        <span class="factor-status">Não avaliado</span>
+      </article>
+      <article class="factor-card">
+        <span class="factor-num">08</span>
+        <div>
+          <h3>Autor</h3>
+          <p>Assinatura, bio e sinais de E-E-A-T: quem escreve, credenciais e consistência da voz com a marca.</p>
+          
+        </div>
+        <span class="factor-status">Não avaliado</span>
+      </article></div>
+    </div>
+    <div id="view-backlinks" class="panel-view">
+    <section class="callout">
+      <span class="callout-badge">Conclusão</span>
+      <h2>Backlinks: Dra. Luana Meireles como referência frente aos concorrentes</h2>
+      <p>Authority Score <strong>7</strong>, <strong>148</strong> backlinks e <strong>76</strong> domínios referentes (Semrush Overview · subdomain/root). Dificuldade espelha a aba Concorrência: Fácil se o AS for menor que o JK, Médio até 3×, Difícil acima de 3×. Categorias: 2 oportunidades + 1 difícil, com top 3 de cada.</p>
+      <div class="conc-lists">
+        <div>
+          <span class="list-label">Categorias com oportunidade (Fácil / Média)</span>
+          <div class="tags"><span class='tag op'>Preenchimentos faciais</span><span class='tag op'>Lipo de papada</span></div>
+        </div>
+        <div>
+          <span class="list-label">Categoria difícil</span>
+          <div class="tags"><span class='tag hard'>Otomodelação</span></div>
+        </div>
+      </div>
+      <p class="crit-note" style="margin-top:14px">0 concorrentes com AS menor que o cliente · 9 com AS igual ou maior.</p>
+    </section>
+
+    
+    <div class="kpi-grid">
+      <div class="kpi">
+        <span class="kpi-label">Authority Score</span>
+        <strong class="kpi-value">7</strong>
+        <span class="kpi-hint">Semrush · root domain</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Backlinks</span>
+        <strong class="kpi-value">148</strong>
+        <span class="kpi-hint">148 links</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Domínios referentes</span>
+        <strong class="kpi-value">76</strong>
+        <span class="kpi-hint">Referring domains</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Concorrentes</span>
+        <strong class="kpi-value">9</strong>
+        <span class="kpi-hint">2 categorias fáceis + 1 difícil</span>
+      </div>
+    </div>
+
+    <div class="section-label"><span>Comparativo geral</span></div>
+    <section class="panel wide">
+      <header class="panel-head">
+        <div class="panel-title">
+          <h3>Ranking por Authority Score</h3>
+          <p>Fonte: <a href="https://www.semrush.com/analytics/backlinks/overview/?q=draluanameireles.com.br&amp;searchType=domain" target="_blank" rel="noopener">Semrush Backlinks Overview</a></p>
+        </div>
+      </header>
+      <div class="scroll">
+        <table class="grid serp">
+          <thead>
+            <tr>
+              <th>Domínio</th>
+              <th class="num">Authority Score</th>
+              <th class="num">Backlinks</th>
+              <th class="num">Ref. domains</th>
+              <th class="num soft-col">Follow</th>
+              <th class="num soft-col">Nofollow</th>
+              <th class="num soft-col">IPs</th>
+              <th>Dificuldade</th>
+            </tr>
+          </thead>
+          <tbody><tr><td class='term'><strong>carumoreno.com.br</strong></td><td class='num strong'>37</td><td class='num'>16.605</td><td class='num'>696</td><td class='num soft-col'>2.953</td><td class='num soft-col'>13.756</td><td class='num soft-col'>899</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>galdermaaesthetics.com.br</strong></td><td class='num strong'>34</td><td class='num'>8.294</td><td class='num'>521</td><td class='num soft-col'>7.629</td><td class='num soft-col'>675</td><td class='num soft-col'>445</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>drdanielstellin.com.br</strong></td><td class='num strong'>32</td><td class='num'>605</td><td class='num'>321</td><td class='num soft-col'>390</td><td class='num soft-col'>214</td><td class='num soft-col'>312</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>drjoaopedrobilo.com.br</strong></td><td class='num strong'>32</td><td class='num'>643</td><td class='num'>310</td><td class='num soft-col'>480</td><td class='num soft-col'>159</td><td class='num soft-col'>288</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>ricardomaniglia.com.br</strong></td><td class='num strong'>25</td><td class='num'>289</td><td class='num'>205</td><td class='num soft-col'>197</td><td class='num soft-col'>92</td><td class='num soft-col'>148</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>drrafaelzatz.com.br</strong></td><td class='num strong'>14</td><td class='num'>750</td><td class='num'>283</td><td class='num soft-col'>540</td><td class='num soft-col'>210</td><td class='num soft-col'>289</td><td><span class='diff medio'>Médio</span></td></tr><tr><td class='term'><strong>otoone.com.br</strong></td><td class='num strong'>14</td><td class='num'>2.103</td><td class='num'>429</td><td class='num soft-col'>272</td><td class='num soft-col'>1.834</td><td class='num soft-col'>426</td><td><span class='diff medio'>Médio</span></td></tr><tr><td class='term'><strong>clinicacarreirao.com.br</strong></td><td class='num strong'>11</td><td class='num'>459</td><td class='num'>219</td><td class='num soft-col'>355</td><td class='num soft-col'>105</td><td class='num soft-col'>182</td><td><span class='diff medio'>Médio</span></td></tr><tr><td class='term'><strong>dradrianoassis.com.br</strong></td><td class='num strong'>11</td><td class='num'>328</td><td class='num'>213</td><td class='num soft-col'>270</td><td class='num soft-col'>58</td><td class='num soft-col'>170</td><td><span class='diff medio'>Médio</span></td></tr><tr class="jk"><td class='term'><strong>draluanameireles.com.br</strong><span class="dom">referência</span></td><td class='num strong'>7</td><td class='num'>148</td><td class='num'>76</td><td class='num soft-col'>109</td><td class='num soft-col'>39</td><td class='num soft-col'>37</td><td><span class='diff ref'>Referência</span></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="section-label"><span>Por categoria (mesmo recorte da Concorrência)</span></div>
+    <div class="stack">
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Preenchimentos faciais</h3>
+            <p>Top 3 concorrentes da SERP · Authority Score vs Dra. Luana Meireles (7)</p>
+          </div>
+          <span class="tag op">Oportunidade</span>
+        </header>
+        <div class="scroll">
+          <table class="grid serp">
+            <thead>
+              <tr>
+                <th>Domínio</th>
+                <th class="num">Authority Score</th>
+                <th class="num">Backlinks</th>
+                <th class="num">Ref. domains</th>
+                <th class="num soft-col">Follow</th>
+                <th class="num soft-col">Nofollow</th>
+                <th class="num soft-col">IPs</th>
+                <th>Dificuldade</th>
+              </tr>
+            </thead>
+            <tbody><tr class="jk"><td class='term'><strong>draluanameireles.com.br</strong><span class="dom">referência</span></td><td class='num strong'>7</td><td class='num'>148</td><td class='num'>76</td><td class='num soft-col'>109</td><td class='num soft-col'>39</td><td class='num soft-col'>37</td><td><span class='diff ref'>Referência</span></td></tr><tr><td class='term'><strong>carumoreno.com.br</strong></td><td class='num strong'>37</td><td class='num'>16.605</td><td class='num'>696</td><td class='num soft-col'>2.953</td><td class='num soft-col'>13.756</td><td class='num soft-col'>899</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>galdermaaesthetics.com.br</strong></td><td class='num strong'>34</td><td class='num'>8.294</td><td class='num'>521</td><td class='num soft-col'>7.629</td><td class='num soft-col'>675</td><td class='num soft-col'>445</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>drdanielstellin.com.br</strong></td><td class='num strong'>32</td><td class='num'>605</td><td class='num'>321</td><td class='num soft-col'>390</td><td class='num soft-col'>214</td><td class='num soft-col'>312</td><td><span class='diff dificil'>Difícil</span></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Lipo de papada</h3>
+            <p>Top 3 concorrentes da SERP · Authority Score vs Dra. Luana Meireles (7)</p>
+          </div>
+          <span class="tag op">Oportunidade</span>
+        </header>
+        <div class="scroll">
+          <table class="grid serp">
+            <thead>
+              <tr>
+                <th>Domínio</th>
+                <th class="num">Authority Score</th>
+                <th class="num">Backlinks</th>
+                <th class="num">Ref. domains</th>
+                <th class="num soft-col">Follow</th>
+                <th class="num soft-col">Nofollow</th>
+                <th class="num soft-col">IPs</th>
+                <th>Dificuldade</th>
+              </tr>
+            </thead>
+            <tbody><tr class="jk"><td class='term'><strong>draluanameireles.com.br</strong><span class="dom">referência</span></td><td class='num strong'>7</td><td class='num'>148</td><td class='num'>76</td><td class='num soft-col'>109</td><td class='num soft-col'>39</td><td class='num soft-col'>37</td><td><span class='diff ref'>Referência</span></td></tr><tr><td class='term'><strong>clinicacarreirao.com.br</strong></td><td class='num strong'>11</td><td class='num'>459</td><td class='num'>219</td><td class='num soft-col'>355</td><td class='num soft-col'>105</td><td class='num soft-col'>182</td><td><span class='diff medio'>Médio</span></td></tr><tr><td class='term'><strong>drjoaopedrobilo.com.br</strong></td><td class='num strong'>32</td><td class='num'>643</td><td class='num'>310</td><td class='num soft-col'>480</td><td class='num soft-col'>159</td><td class='num soft-col'>288</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>dradrianoassis.com.br</strong></td><td class='num strong'>11</td><td class='num'>328</td><td class='num'>213</td><td class='num soft-col'>270</td><td class='num soft-col'>58</td><td class='num soft-col'>170</td><td><span class='diff medio'>Médio</span></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel wide">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Otomodelação</h3>
+            <p>Top 3 concorrentes da SERP · Authority Score vs Dra. Luana Meireles (7)</p>
+          </div>
+          <span class="tag hard">Difícil</span>
+        </header>
+        <div class="scroll">
+          <table class="grid serp">
+            <thead>
+              <tr>
+                <th>Domínio</th>
+                <th class="num">Authority Score</th>
+                <th class="num">Backlinks</th>
+                <th class="num">Ref. domains</th>
+                <th class="num soft-col">Follow</th>
+                <th class="num soft-col">Nofollow</th>
+                <th class="num soft-col">IPs</th>
+                <th>Dificuldade</th>
+              </tr>
+            </thead>
+            <tbody><tr class="jk"><td class='term'><strong>draluanameireles.com.br</strong><span class="dom">referência</span></td><td class='num strong'>7</td><td class='num'>148</td><td class='num'>76</td><td class='num soft-col'>109</td><td class='num soft-col'>39</td><td class='num soft-col'>37</td><td><span class='diff ref'>Referência</span></td></tr><tr><td class='term'><strong>drrafaelzatz.com.br</strong></td><td class='num strong'>14</td><td class='num'>750</td><td class='num'>283</td><td class='num soft-col'>540</td><td class='num soft-col'>210</td><td class='num soft-col'>289</td><td><span class='diff medio'>Médio</span></td></tr><tr><td class='term'><strong>ricardomaniglia.com.br</strong></td><td class='num strong'>25</td><td class='num'>289</td><td class='num'>205</td><td class='num soft-col'>197</td><td class='num soft-col'>92</td><td class='num soft-col'>148</td><td><span class='diff dificil'>Difícil</span></td></tr><tr><td class='term'><strong>otoone.com.br</strong></td><td class='num strong'>14</td><td class='num'>2.103</td><td class='num'>429</td><td class='num soft-col'>272</td><td class='num soft-col'>1.834</td><td class='num soft-col'>426</td><td><span class='diff medio'>Médio</span></td></tr></tbody>
+          </table>
+        </div>
+      </section></div>
+    </div>
+
+    <footer class="foot">
+      <span>Volumes: DataForSEO · Marca/Seo e Backlinks: Semrush · Programação/Blog: auditoria draluanameireles.com.br</span>
+      <span>Referência de marca Dra. Luana Meireles: 1</span>
+    </footer>
+  </div>
+<script>
+document.querySelectorAll('.tab').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var id = btn.dataset.view;
+    document.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('active', b === btn); });
+    document.querySelectorAll('.panel-view').forEach(function (v) {
+      v.classList.toggle('active', v.id === 'view-' + id);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+function sortPanel(panel, dir) {
+  var tbody = panel.querySelector('tbody');
+  if (!tbody) return;
+  var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+  rows.sort(function (a, b) {
+    var va = Number(a.dataset.volume || 0);
+    var vb = Number(b.dataset.volume || 0);
+    return dir === 'asc' ? va - vb : vb - va;
+  });
+  rows.forEach(function (row, i) {
+    var idx = row.querySelector('.idx');
+    if (idx) idx.textContent = String(i + 1);
+    tbody.appendChild(row);
+  });
+  panel.querySelectorAll('.chip').forEach(function (c) {
+    c.classList.toggle('active', c.dataset.sort === dir);
+  });
+}
+
+document.querySelectorAll('.chip[data-sort]').forEach(function (chip) {
+  chip.addEventListener('click', function () {
+    sortPanel(chip.closest('.panel'), chip.dataset.sort);
+  });
+});
+
+document.querySelectorAll('th.sortable').forEach(function (th) {
+  th.addEventListener('click', function () {
+    var panel = th.closest('.panel');
+    var active = panel.querySelector('.chip.active');
+    var next = active && active.dataset.sort === 'desc' ? 'asc' : 'desc';
+    sortPanel(panel, next);
+  });
+});
+</script>
+</body>
+</html>
